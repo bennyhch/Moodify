@@ -9,10 +9,10 @@ const PORT = 3300;
 
 
 app.use(cors());
-//app.use(Express.json());
+//app.use(express.json());
 app.use(morgan('short'));
 app.use(router);
-app.get('/', (req, res) => {res.send('Server working')})
+
 
 
 
