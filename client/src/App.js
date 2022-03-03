@@ -1,8 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import './App.css';
 import Emotions from './Components/Emotions';
-import Navbar from './Components/Navbar';
+import Navbarcomp from './Components/Navbarcomp';
 
+///////////////
+import 'bootstrap/dist/css/bootstrap.min.css';
+///////////////
 
 
 function App() {
@@ -17,7 +20,7 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar/>
+      <Navbarcomp/>
       <Emotions entry={entry} setEntry={setEntry}> </Emotions>
     </div>
   );
