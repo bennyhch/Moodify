@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import React, {useEffect, useState} from 'react';
 import './App.css';
 import Emotions from './Components/Emotions';
 import Navbar from './Components/Navbar';
@@ -7,18 +7,18 @@ import Navbar from './Components/Navbar';
 
 function App() {
 /////////
-  // const [emotion, setEmotion] = useState([]);
+  const [entry, setEntry] = useState([]);
 
-  // useEffect(() => {
+  useEffect(() => {
 
-  // })
+  }, []);
 //////////
 
 
   return (
     <div className="App">
       <Navbar/>
-      <Emotions />
+      <Emotions entry={entry} setEntry={setEntry}> </Emotions>
     </div>
   );
 }

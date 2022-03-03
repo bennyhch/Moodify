@@ -10,6 +10,7 @@ export const postOneEntry = (entry) => {
         .catch(e => console.log(e));
 }
 
-// 1. retrieving data from db and display it on the statistics page
+//
+// 1. (GET)retrieving data from db and display it on the statistics page
 // 2. organize the data and make the pie chart 
 // export const getEntry

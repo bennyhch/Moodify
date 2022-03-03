@@ -1,21 +1,32 @@
 import React from 'react'
+import { postOneEntry } from '../Services/ApiClient';
 
 
 
-export default function Emotions() {
+export default function Emotions({setEntry}) {
   
 	const sumbitHandler = (e) => {
 		e.preventDefault();
-		// think twice about using event!!!!
 		const entry = { 
 			emotion: e.target.useremotions.value, 
-			triggerEvent: e.target.usertriggeringevent.value, 
+			triggeringEvent: e.target.usertriggeringevent.value, 
 			thought: e.target.userthought.value,
 			behavior: e.target.userbehavior.value,
 			date: e.target.userdate.value
 	};
 	console.log(entry, 'entry');
 
+	postOneEntry(entry)
+		.then(newEntry => {
+			setEntry(lastEntry => [...lastEntry, newEntry]);
+			// emotions set it back to default?? 
+			e.target.usertriggeringevent.value = '';
+			e.target.userthought.value = '';
+			e.target.userbehavior.value = '';
+			e.target.userdate.value = null;
+			
+		})
+		.catch(e => console.log(e));
 	}
 
   return (
