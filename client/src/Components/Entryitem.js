@@ -4,16 +4,12 @@ export default function Entryitem({ent}) {
   
   return (
     <div>
-      <div className='emotion-box'>
+      {/* <div className='emotion-box'>
         <h3>Sad</h3>
         <div>Event:</div>
-      </div>
-      
-      {/* <div>
-        <ul>
-          <li> {ent.triggeringEvent}</li>
-        </ul>
       </div> */}
+      <p>{ent.triggeringEvent}</p>
+    
       
     </div>
         

@@ -15,7 +15,7 @@ export default function Navbarcomp({entry}) {
   return (
     <Router>
       <div>
-        {console.log("entry in navbar", entry)}
+        {/* {console.log("entry in navbar", entry)} */}
         <Navbar bg="dark" variant={"dark"} expand="lg">
           {/* <Navbar.Brand href="#home">Moodify - Be Your Own Therapist</Navbar.Brand> */}
           <Navbar.Brand href="/">Moodify - Be Your Own Therapist</Navbar.Brand>
