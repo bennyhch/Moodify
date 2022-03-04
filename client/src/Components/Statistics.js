@@ -1,8 +1,8 @@
 import Entryitemevent from './Entryitemevent';
 import Entryitemthought from './Entryitemthought';
 import moment from 'moment';
-import React, { PureComponent } from 'react';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import React, { PureComponent, useState, useCallback } from 'react';
+import { PieChart, Pie, Sector, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 
 export default function Statistics({entry}) {
@@ -20,16 +20,16 @@ export default function Statistics({entry}) {
   dayOfTheWeekSad.forEach((x) => {
     countsSad[x] = (countsSad[x] || 0) + 1;
   });
-  console.log('counts of Sad day', countsSad);
+  // console.log('counts of Sad day', countsSad);
 
   const dayOfTheWeekHappy =  filteringHappy.map((one) => moment(one.date).format('dddd'));
   const countsHappy = {};
   dayOfTheWeekHappy.forEach((x) => {
     countsHappy[x] = (countsHappy[x] || 0) + 1;
   });
-  console.log('counts of Happy day', countsHappy);
+  // console.log('counts of Happy day', countsHappy);
 
-  const dayOfTheWeekAnxious =  filteringAnxious.map((one) => moment(one.date).format('dddd'));
+  const dayOfTheWeekAnxious = filteringAnxious.map((one) => moment(one.date).format('dddd'));
   const countsAnxious = {};
   dayOfTheWeekAnxious.forEach((x) => {
     countsAnxious[x] = (countsAnxious[x] || 0) + 1;
@@ -87,12 +87,117 @@ export default function Statistics({entry}) {
     },
   ];
 
+  ///////////////////////////////////////////////////////////////PIE CHART MESS... START FROM HERE
+  const dataPie = [
+    { name: "Sad", value: numSad },
+    { name: "Happy", value: numHappy },
+    { name: "Anxious", value: numAnxious }
+  ];
+  
+  const renderActiveShape = (props) => {
+    const RADIAN = Math.PI / 180;
+    const {
+      cx,
+      cy,
+      midAngle,
+      innerRadius,
+      outerRadius,
+      startAngle,
+      endAngle,
+      fill,
+      payload,
+      percent,
+      value
+    } = props;
+    const sin = Math.sin(-RADIAN * midAngle);
+    const cos = Math.cos(-RADIAN * midAngle);
+    const sx = cx + (outerRadius + 10) * cos;
+    const sy = cy + (outerRadius + 10) * sin;
+    const mx = cx + (outerRadius + 30) * cos;
+    const my = cy + (outerRadius + 30) * sin;
+    const ex = mx + (cos >= 0 ? 1 : -1) * 22;
+    const ey = my;
+    const textAnchor = cos >= 0 ? "start" : "end";
+  
+    return (
+      <g>
+        <text x={cx} y={cy} dy={8} textAnchor="middle" fill={fill}>
+          {payload.name}
+        </text>
+        <Sector
+          cx={cx}
+          cy={cy}
+          innerRadius={innerRadius}
+          outerRadius={outerRadius}
+          startAngle={startAngle}
+          endAngle={endAngle}
+          fill={fill}
+        />
+        <Sector
+          cx={cx}
+          cy={cy}
+          startAngle={startAngle}
+          endAngle={endAngle}
+          innerRadius={outerRadius + 6}
+          outerRadius={outerRadius + 10}
+          fill={fill}
+        />
+        <path
+          d={`M${sx},${sy}L${mx},${my}L${ex},${ey}`}
+          stroke={fill}
+          fill="none"
+        />
+        <circle cx={ex} cy={ey} r={2} fill={fill} stroke="none" />
+        <text
+          x={ex + (cos >= 0 ? 1 : -1) * 12}
+          y={ey}
+          textAnchor={textAnchor}
+          fill="#333"
+        >{`${value} times`}</text>
+        <text
+          x={ex + (cos >= 0 ? 1 : -1) * 12}
+          y={ey}
+          dy={18}
+          textAnchor={textAnchor}
+          fill="#999"
+        >
+          {`(${(percent * 100).toFixed(2)}%)`}
+        </text>
+      </g>
+    );
+  };
+
+  const [activeIndex, setActiveIndex] = useState(0);
+  const onPieEnter = useCallback(
+    (_, index) => {
+      setActiveIndex(index);
+    },
+    [setActiveIndex]
+  );
+  ///////////////////////////////////////////////////////////////PIE CHART MESS... STOP FROM HERE
 
 
   return (
     <div>
       <div className='charts'>
-        
+
+        <div className='barchart'>
+          <PieChart width={400} height={400}>
+            <Pie
+              activeIndex={activeIndex}
+              activeShape={renderActiveShape}
+              data={dataPie}
+              cx={200}
+              cy={200}
+              innerRadius={60}
+              outerRadius={80}
+              fill="#8884d8"
+              dataKey="value"
+              onMouseEnter={onPieEnter}
+            />
+          </PieChart>
+        </div>
+      
         <div className='linechart'>
           <LineChart
             width={500}
