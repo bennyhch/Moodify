@@ -14,3 +14,9 @@ export const postOneEntry = (entry) => {
 // 1. (GET)retrieving data from db and display it on the statistics page
 // 2. organize the data and make the pie chart 
 // export const getEntry
+
+export const getEntry = () => {
+    return fetch(`${baseUrl}/statistics`)
+        .then(res => res.json())
+        .catch(e => console.log(e));
+}

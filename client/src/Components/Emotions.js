@@ -1,5 +1,6 @@
 import React from 'react'
 import { postOneEntry } from '../Services/ApiClient';
+import anxiousFace from './../images/anxious.png';
 
 
 
@@ -39,7 +40,18 @@ export default function Emotions({setEntry}) {
                 <option value="anxious">Anxious</option>
                 <option value="happy">Happy</option>
             </select>
-
+{/* checkbox experiment */}
+            <ul>
+              <li>
+                <input type="checkbox" id="myCheckbox1" />
+                <label for="myCheckbox1"><img src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/320/whatsapp/314/anxious-face-with-sweat_1f630.png" /></label>
+              </li>
+              <li>
+                <input type="checkbox" id="myCheckbox2" />
+                <label for="myCheckbox2"><img src={anxiousFace} /></label>
+              </li>
+            </ul>
+{/* checkbox experiment  */}
             <div className='question'>Triggering Event...</div>
             <input type='text' name='usertriggeringevent' placeholder='I failed the test...' required/>
 

@@ -1,21 +1,5 @@
 const {Emotion} = require('../model/emotionModel');
 
-async function getStatistics(req, res) {
-    try {
-        res.send('hello from the controller -stat');
-    } catch (error) {
-        console.log(error);
-    }
-}
-
-async function getHomePage(req, res) {
-    try {
-        res.send('hello from the controller - homepage3');
-    } catch (error) {
-        console.log(error);
-    }
-}
-
 async function postEmotionEntry(req, res) {
     try {
         console.log(req.body);
@@ -30,6 +14,29 @@ async function postEmotionEntry(req, res) {
         res.end();
     }
 }
+
+async function getStatistics(req, res) {
+    try {
+        // res.send('hello from the controller -statistics');
+        const dbRes = await Emotion.find();
+        console.log(dbRes);
+        res.send(dbRes);
+        res.status(200);
+    } catch (error) {
+        console.log(error);
+        res.status(500);
+        res.end();
+    }
+}
+
+async function getHomePage(req, res) {
+    try {
+        res.send('hello from the controller - homepage3');
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 
 
 module.exports = {getStatistics, getHomePage, postEmotionEntry};
