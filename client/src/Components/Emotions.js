@@ -1,56 +1,67 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { postOneEntry } from '../Services/ApiClient';
 import anxiousFace from './../images/anxious.png';
+import sadFace from'./../images/sad.png';
+import happyFace from './../images/happy.png';
 
 
 
 export default function Emotions({setEntry}) {
   
+  const [emojiType, setEmojiType] = useState("");
+
 	const sumbitHandler = (e) => {
 		e.preventDefault();
 		const entry = { 
-			emotion: e.target.useremotions.value, 
+      emotion: emojiType,
 			triggeringEvent: e.target.usertriggeringevent.value, 
 			thought: e.target.userthought.value,
 			behavior: e.target.userbehavior.value,
 			date: e.target.userdate.value
 	};
-	console.log(entry, 'entry');
+	// console.log(entry, 'entry');
+  console.log('e', e);
+  console.log('e.target', e.target);
+  console.log('emoji Type', emojiType);
 
 	postOneEntry(entry)
 		.then(newEntry => {
 			setEntry(lastEntry => [...lastEntry, newEntry]);
-			// emotions set it back to default?? 
+      setEmojiType('')
 			e.target.usertriggeringevent.value = '';
 			e.target.userthought.value = '';
 			e.target.userbehavior.value = '';
 			e.target.userdate.value = null;
-			
 		})
 		.catch(e => console.log(e));
 	}
 
+  function onChangeValue(event) {
+    setEmojiType(event.target.value);
+    console.log(event.target.value);
+  }
+
   return (
     <div>
         <form onSubmit={sumbitHandler}>
-
             <div className='question'>How you feeling?</div>
-            <select name="useremotions">
+            {/* <select name="useremotions">
                 <option value="sad">Sad</option>
                 <option value="anxious">Anxious</option>
                 <option value="happy">Happy</option>
-            </select>
+            </select> */}
 {/* checkbox experiment */}
-            <ul>
-              <li>
-                <input type="checkbox" id="myCheckbox1" />
-                <label for="myCheckbox1"><img src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/320/whatsapp/314/anxious-face-with-sweat_1f630.png" /></label>
-              </li>
-              <li>
-                <input type="checkbox" id="myCheckbox2" />
-                <label for="myCheckbox2"><img src={anxiousFace} /></label>
-              </li>
-            </ul>
+            <div >
+              <label>
+                <input type="radio" value='anxious' name="anxious"  checked={emojiType === 'anxious'} onChange={onChangeValue}/> <img src={anxiousFace} />
+              </label>
+              <label>
+                <input type="radio" value='sad' name="sad" checked={emojiType === 'sad'} onChange={onChangeValue}/> <img src={sadFace} />
+              </label>
+              <label>
+                <input type="radio" value='happy' name="happy" checked={emojiType === 'happy'} onChange={onChangeValue}/> <img src={happyFace} />
+              </label>
+            </div>
 {/* checkbox experiment  */}
             <div className='question'>Triggering Event...</div>
             <input type='text' name='usertriggeringevent' placeholder='I failed the test...' required/>

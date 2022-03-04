@@ -3,6 +3,7 @@ import Entryitemthought from './Entryitemthought';
 import moment from 'moment';
 import React, { PureComponent, useState, useCallback } from 'react';
 import { PieChart, Pie, Sector, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import Entryitembehavior from './Entryitembehavior';
 
 
 export default function Statistics({entry}) {
@@ -239,7 +240,7 @@ export default function Statistics({entry}) {
             </div>
           <div style={{color: 'red'}}>Behaviour:</div>
             <div>
-                {filteringSad.map((ent) => <Entryitemthought ent={ent} key={ent.id}></Entryitemthought>)}
+                {filteringSad.map((ent) => <Entryitembehavior ent={ent} key={ent.id}></Entryitembehavior>)}
             </div>
         </div>
 
@@ -255,7 +256,7 @@ export default function Statistics({entry}) {
             </div>
           <div style={{color: 'blue'}}>Behaviour:</div>
             <div>
-                {filteringHappy.map((ent) => <Entryitemthought ent={ent} key={ent.id}></Entryitemthought>)}
+                {filteringHappy.map((ent) => <Entryitembehavior ent={ent} key={ent.id}></Entryitembehavior>)}
             </div>
         </div>
 
@@ -271,7 +272,7 @@ export default function Statistics({entry}) {
             </div>
           <div style={{color: 'green'}}>Behaviour:</div>
             <div>
-                {filteringAnxious.map((ent) => <Entryitemthought ent={ent} key={ent.id}></Entryitemthought>)}
+                {filteringAnxious.map((ent) => <Entryitembehavior ent={ent} key={ent.id}></Entryitembehavior>)}
             </div>
         </div>
       </div>

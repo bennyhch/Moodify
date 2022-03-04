@@ -8,6 +8,7 @@ import {
   Link
 } from "react-router-dom";
 import Emotions from './Emotions';
+import Journal from './Journal';
 import Statistics from './Statistics';
 import Support from './Support';
 
@@ -15,7 +16,6 @@ export default function Navbarcomp({entry}) {
   return (
     <Router>
       <div>
-        {/* {console.log("entry in navbar", entry)} */}
         <Navbar bg="dark" variant={"dark"} expand="lg">
           {/* <Navbar.Brand href="#home">Moodify - Be Your Own Therapist</Navbar.Brand> */}
           <Navbar.Brand href="/">Moodify - Be Your Own Therapist</Navbar.Brand>
@@ -23,10 +23,10 @@ export default function Navbarcomp({entry}) {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
               {/* <Nav.Link href="#home">Home</Nav.Link> */}
-              {/* <Nav.Link href="#link">Link</Nav.Link> */}
               <Nav.Link as={Link} to={'/'}>Home</Nav.Link>
               <Nav.Link as={Link} to={'/statistics'} >Statistics</Nav.Link>
               <Nav.Link as={Link} to={'/support'}>Support</Nav.Link>
+              <Nav.Link as={Link} to={'/journal'}>Journal</Nav.Link>
 
               {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
@@ -48,6 +48,7 @@ export default function Navbarcomp({entry}) {
             <Route exact path="/support" element={<Support />} /> 
               {/* <Emotions />
             </Route> */}
+            <Route exact path="/journal" element={<Journal entry={entry} />} /> 
         </Routes>
       </div>
     </Router>
