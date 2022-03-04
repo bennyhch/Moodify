@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Entryitem({ent}) {
+export default function Entryitemevent({ent}) {
   
   return (
     <div>
@@ -8,7 +8,7 @@ export default function Entryitem({ent}) {
         <h3>Sad</h3>
         <div>Event:</div>
       </div> */}
-      <p>{ent.triggeringEvent}</p>
+      <div>{ent.triggeringEvent}</div>
     
       
     </div>
