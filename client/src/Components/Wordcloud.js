@@ -8,7 +8,7 @@ import Entryitemevent from './Entryitemevent';
 import Entryitemthought from './Entryitemthought';
 
 
-export default function Support({entry}) {
+export default function Wordcloud({entry}) {
 
   const filteringSad = entry.filter(oneEntry => oneEntry.emotion === 'sad');
   const filteringHappy = entry.filter(oneEntry => oneEntry.emotion === 'happy');

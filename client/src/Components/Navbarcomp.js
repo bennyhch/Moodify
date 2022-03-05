@@ -10,7 +10,7 @@ import {
 import Emotions from './Emotions';
 import Journal from './Journal';
 import Statistics from './Statistics';
-import Support from './Support';
+import Wordcloud from './Wordcloud';
 
 export default function Navbarcomp({entry, setEntry}) {
   return (
@@ -26,7 +26,7 @@ export default function Navbarcomp({entry, setEntry}) {
               <Nav.Link as={Link} to={'/'}>Home</Nav.Link>
               <Nav.Link as={Link} to={'/statistics'} >Statistics</Nav.Link>
               <Nav.Link as={Link} to={'/journal'}>Journal</Nav.Link>
-              <Nav.Link as={Link} to={'/support'}>Support</Nav.Link>
+              <Nav.Link as={Link} to={'/wordcloud'}>Word Cloud</Nav.Link>
 
               {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
@@ -44,7 +44,7 @@ export default function Navbarcomp({entry, setEntry}) {
             <Route exact path="/" element={<Emotions entry={entry} setEntry={setEntry}/>} />
             <Route exact path="/statistics" element={<Statistics entry={entry}/>} />
             <Route exact path="/journal" element={<Journal entry={entry} />} /> 
-            <Route exact path="/support" element={<Support entry={entry} />} /> 
+            <Route exact path="/wordcloud" element={<Wordcloud entry={entry} />} /> 
         </Routes>
       </div>
     </Router>
