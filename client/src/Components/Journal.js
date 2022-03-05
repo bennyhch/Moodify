@@ -13,105 +13,7 @@ export default function Journal({entry}) {
   const filteringHappy = entry.filter(oneEntry => oneEntry.emotion === 'happy');
   const filteringAnxious = entry.filter(oneEntry => oneEntry.emotion === 'anxious');
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//Word Cloud
-	function splitingSentences (string) { 
-		let word = string.trim().split(" ");
-		return word;
-	}
-//// Sad
-	const arrSadEvent = [];
-	filteringSad.forEach(oneEvent => {
-		// console.log('spliting oneEvent.triggeringEvent', splitingSentences(oneEvent.triggeringEvent));
-		arrSadEvent.push(splitingSentences(oneEvent.triggeringEvent))
-		return arrSadEvent;
-	});
-	// console.log('myarr', arrSadEvent);
-	const flattenedSadEvent = [].concat(...arrSadEvent);
-	// console.log('flattenedSadEvent', flattenedSadEvent);
-
-	const arrSadThought = [];
-	filteringSad.forEach(oneEvent => {
-		arrSadThought.push(splitingSentences(oneEvent.thought))
-		return arrSadThought;
-	});
-	const flattenedSadThought = [].concat(...arrSadThought);
-
-	const arrSadBehavior = [];
-	filteringSad.forEach(oneEvent => {
-		arrSadBehavior.push(splitingSentences(oneEvent.behavior))
-		return arrSadBehavior;
-	});
-	const flattenedSadBehavior = [].concat(...arrSadBehavior);
-
-//// Happy
-	const arrHappyEvent = [];
-	filteringHappy.forEach(oneEvent => {
-		arrHappyEvent.push(splitingSentences(oneEvent.triggeringEvent))
-		return arrHappyEvent;
-	});
-	const flattenedHappyEvent = [].concat(...arrHappyEvent);
-	console.log(flattenedHappyEvent, 'happy event')
-
-	const countsCloudHappyEvent = {};
-	flattenedHappyEvent.forEach((wrd) => {
-		countsCloudHappyEvent[wrd] = (countsCloudHappyEvent[wrd] || 0) + 1;
-	});
-	console.log( 'countsCloudHappyEventOBJECT!', countsCloudHappyEvent);
-	const arrCloudHappyEvent = [];
-	for (const [key, value] of Object.entries(countsCloudHappyEvent)) {
-		let obj = {text: `${key}`, value: `${value}`}
-		obj.value = Number(obj.value);
-		arrCloudHappyEvent.push(obj);
-		// arrCloudHappyEvent.push({text: `${key}`, value: `${value}`});
-	}
-	console.log('arrCloudHappyEvent', arrCloudHappyEvent);
-
-
-	const arrHappyThought = [];
-	filteringHappy.forEach(oneEvent => {
-		arrHappyThought.push(splitingSentences(oneEvent.thought))
-		return arrHappyThought;
-	});
-	const flattenedHappyThought = [].concat(...arrHappyThought);
-
-	const arrHappyBehavior = [];
-	filteringHappy.forEach(oneEvent => {
-		arrHappyBehavior.push(splitingSentences(oneEvent.behavior))
-		return arrHappyBehavior;
-	});
-	const flattenedHappyBehavior = [].concat(...arrHappyBehavior);
-
-	//// Anxiety
-	const arrAnxiousEvent = [];
-	filteringAnxious.forEach(oneEvent => {
-		arrAnxiousEvent.push(splitingSentences(oneEvent.triggeringEvent))
-		return arrAnxiousEvent;
-	});
-	const flattenedAnxiousEvent = [].concat(...arrAnxiousEvent);
-
-	const arrAnxiousThought = [];
-	filteringAnxious.forEach(oneEvent => {
-		arrAnxiousThought.push(splitingSentences(oneEvent.thought))
-		return arrAnxiousThought;
-	});
-	const flattenedAnxiousThought = [].concat(...arrAnxiousThought);
-
-	const arrAnxiousBehavior = [];
-	filteringAnxious.forEach(oneEvent => {
-		arrAnxiousBehavior.push(splitingSentences(oneEvent.behavior))
-		return arrAnxiousBehavior;
-	});
-	const flattenedAnxiousBehavior = [].concat(...arrAnxiousBehavior);
-
-
-
-//Word Cloud Above
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  
-	
-	
-	
+  	
 	const dayOfTheWeekSad =  filteringSad.map((one) => moment(one.date).format('dddd'));
   const countsSad = {};
   dayOfTheWeekSad.forEach((x) => {
@@ -132,10 +34,6 @@ export default function Journal({entry}) {
 
   return (
     <div>
-			<div>
-      	<WordCloud width={500} height={500} data={arrCloudHappyEvent} />
-			</div>
-			
     	<div>
         <div className='sadbox'>
           <h3>Sad</h3>
