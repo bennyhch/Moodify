@@ -4,7 +4,6 @@ import Entryitembehavior from './Entryitembehavior';
 import Entryitemevent from './Entryitemevent';
 import Entryitemthought from './Entryitemthought';
 
-import WordCloud from 'react-d3-cloud';
 
 
 export default function Journal({entry}) {

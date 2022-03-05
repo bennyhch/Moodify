@@ -1,9 +1,12 @@
 import Entryitemevent from './Entryitemevent';
 import Entryitemthought from './Entryitemthought';
+import Entryitembehavior from './Entryitembehavior';
 import moment from 'moment';
 import React, { PureComponent, useState, useCallback } from 'react';
-import { PieChart, Pie, Sector, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import Entryitembehavior from './Entryitembehavior';
+import { BarChart, Bar, Cell, ReferenceLine, PieChart, Pie, Sector, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+
+
+
 
 
 export default function Statistics({entry}) {
@@ -11,7 +14,6 @@ export default function Statistics({entry}) {
   const filteringSad = entry.filter(oneEntry => oneEntry.emotion === 'sad');
   const filteringHappy = entry.filter(oneEntry => oneEntry.emotion === 'happy');
   const filteringAnxious = entry.filter(oneEntry => oneEntry.emotion === 'anxious');
-
 
   const numSad = filteringSad.length;
   const numHappy = filteringHappy.length;
@@ -29,7 +31,7 @@ export default function Statistics({entry}) {
   dayOfTheWeekHappy.forEach((x) => {
     countsHappy[x] = (countsHappy[x] || 0) + 1;
   });
-  // console.log('counts of Happy day', countsHappy);
+  console.log(countsSad);
 
   const dayOfTheWeekAnxious = filteringAnxious.map((one) => moment(one.date).format('dddd'));
   const countsAnxious = {};
@@ -37,6 +39,55 @@ export default function Statistics({entry}) {
     countsAnxious[x] = (countsAnxious[x] || 0) + 1;
   });
 
+
+  const numNeg = -(numSad + numAnxious);
+  ////////////////////////////////////////////////
+  const dataPosAndNeg = [
+    {
+      name: 'Mon',
+      Positivity: (countsHappy.Monday || 0),
+      Negativity: (-(countsSad.Monday + countsAnxious.Monday) || 0),
+      amt: 4,
+    },
+    {
+      name: 'Tues',
+      Positivity: (countsHappy.Tuesday || 0),
+      Negativity: (-(countsSad.Tuesday + countsAnxious.Tuesday) || 0),
+      amt: 2,
+    },
+    {
+      name: 'Wed',
+      Positivity: (countsHappy.Wednesday || 0),
+      Negativity: (-(countsSad.Wednesday + countsAnxious.Wednesday) || 0),
+      amt: 3,
+    },
+    {
+      name: 'Thurs',
+      Positivity: (countsHappy.Thursday || 0),
+      Negativity: (-(countsSad.Thursday + countsAnxious.Thursday) || 0),
+      amt: 2,
+    },
+    {
+      name: 'Fri',
+      Positivity: (countsHappy.Friday || 0),
+      Negativity: (-(countsSad.Friday + countsAnxious.Friday) || 0),
+      amt: 1,
+    },
+    {
+      name: 'Sat',
+      Positivity: (countsHappy.Saturday || 0),
+      Negativity: (-(countsSad.Saturday + countsAnxious.Saturday) || 0),
+      amt: 2,
+    },
+    {
+      name: 'Sun',
+      Positivity: (countsHappy.Sunday || 0),
+      Negativity: (-(countsSad.Sunday + countsAnxious.Sunday) || 0),
+      amt: 2,
+    },
+  ];
+
+  ////////////////////////////////////////////////
   const data = [
     {
       name: 'Mon',
@@ -183,7 +234,7 @@ export default function Statistics({entry}) {
     <div>
       <div className='charts'>
 
-        <div className='barchart'>
+        <div className='piechart'>
           <PieChart width={400} height={400}>
             <Pie
               activeIndex={activeIndex}
@@ -223,61 +274,33 @@ export default function Statistics({entry}) {
 
           </LineChart>
         </div>
+        
+        <div className='barchar' >
+          <ResponsiveContainer >
+            <BarChart
+              width={500}
+              height={300}
+              data={dataPosAndNeg}
+              margin={{
+                top: 5,
+                right: 30,
+                left: 20,
+                bottom: 5,
+              }}
+            >
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="name" />
+              <YAxis />
+              <Tooltip />
+              <Legend />
+              <ReferenceLine y={0} stroke="#000" />
+              <Bar dataKey="Positivity" fill="#8884d8" />
+              <Bar dataKey="Negativity" fill="#82ca9d" />
+            </BarChart>
+          </ResponsiveContainer>  
+        </div>
 
       </div>
-{/* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */}
-{/* entries below */}
-      
-      
-      {/* <div>
-        <div className='sadbox'>
-          <h3>Sad</h3>
-          <div style={{color: 'red'}}>Event:</div>
-            <div>
-              {filteringSad.map((ent) => <Entryitemevent ent={ent} key={ent.id}></Entryitemevent>)}
-            </div>
-          <div style={{color: 'red'}}>Thought:</div>
-            <div>
-                {filteringSad.map((ent) => <Entryitemthought ent={ent} key={ent.id}></Entryitemthought>)}
-            </div>
-          <div style={{color: 'red'}}>Behaviour:</div>
-            <div>
-                {filteringSad.map((ent) => <Entryitembehavior ent={ent} key={ent.id}></Entryitembehavior>)}
-            </div>
-        </div>
-
-        <div className='happybox'>
-          <h3>Happy</h3>
-          <div style={{color: 'blue'}}>Event:</div>
-            <div>
-              {filteringHappy.map((ent) => <Entryitemevent ent={ent} key={ent.id}></Entryitemevent>)}
-            </div>
-          <div style={{color: 'blue'}}>Thought:</div>
-            <div>
-                {filteringHappy.map((ent) => <Entryitemthought ent={ent} key={ent.id}></Entryitemthought>)}
-            </div>
-          <div style={{color: 'blue'}}>Behaviour:</div>
-            <div>
-                {filteringHappy.map((ent) => <Entryitembehavior ent={ent} key={ent.id}></Entryitembehavior>)}
-            </div>
-        </div>
-
-        <div className='anxiousbox'>
-          <h3>Anxiety</h3>
-          <div style={{color: 'green'}}>Event:</div>
-            <div>
-              {filteringAnxious.map((ent) => <Entryitemevent ent={ent} key={ent.id}></Entryitemevent>)}
-            </div>
-          <div style={{color: 'green'}}>Thought:</div>
-            <div>
-                {filteringAnxious.map((ent) => <Entryitemthought ent={ent} key={ent.id}></Entryitemthought>)}
-            </div>
-          <div style={{color: 'green'}}>Behaviour:</div>
-            <div>
-                {filteringAnxious.map((ent) => <Entryitembehavior ent={ent} key={ent.id}></Entryitembehavior>)}
-            </div>
-        </div>
-      </div> */}
 
     </div>
   )
