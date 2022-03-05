@@ -23,7 +23,7 @@ function App() {
   return (
     <div className="App">
       <Navbarcomp entry={entry} setEntry={setEntry}/>
-      <Emotions entry={entry} setEntry={setEntry}></Emotions>
+      {/* <Emotions entry={entry} setEntry={setEntry}></Emotions> */}
     </div>
   );
 }

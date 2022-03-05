@@ -12,7 +12,7 @@ import Journal from './Journal';
 import Statistics from './Statistics';
 import Support from './Support';
 
-export default function Navbarcomp({entry}) {
+export default function Navbarcomp({entry, setEntry}) {
   return (
     <Router>
       <div>
@@ -25,8 +25,8 @@ export default function Navbarcomp({entry}) {
               {/* <Nav.Link href="#home">Home</Nav.Link> */}
               <Nav.Link as={Link} to={'/'}>Home</Nav.Link>
               <Nav.Link as={Link} to={'/statistics'} >Statistics</Nav.Link>
-              <Nav.Link as={Link} to={'/support'}>Support</Nav.Link>
               <Nav.Link as={Link} to={'/journal'}>Journal</Nav.Link>
+              <Nav.Link as={Link} to={'/support'}>Support</Nav.Link>
 
               {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
@@ -41,14 +41,10 @@ export default function Navbarcomp({entry}) {
       </div>
       <div>
         <Routes>
+            <Route exact path="/" element={<Emotions entry={entry} setEntry={setEntry}/>} />
             <Route exact path="/statistics" element={<Statistics entry={entry}/>} />
-              {/* <Statistics />
-            </Route> */}
-            {/* <Route exact path="/" element={<Emotions />} />  */}
-            <Route exact path="/support" element={<Support />} /> 
-              {/* <Emotions />
-            </Route> */}
             <Route exact path="/journal" element={<Journal entry={entry} />} /> 
+            <Route exact path="/support" element={<Support entry={entry} />} /> 
         </Routes>
       </div>
     </Router>

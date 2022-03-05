@@ -3,6 +3,7 @@ import { postOneEntry } from '../Services/ApiClient';
 import anxiousFace from './../images/anxious.png';
 import sadFace from'./../images/sad.png';
 import happyFace from './../images/happy.png';
+import './CSS/Emotions.css';
 
 
 

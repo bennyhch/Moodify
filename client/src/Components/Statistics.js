@@ -12,6 +12,7 @@ export default function Statistics({entry}) {
   const filteringHappy = entry.filter(oneEntry => oneEntry.emotion === 'happy');
   const filteringAnxious = entry.filter(oneEntry => oneEntry.emotion === 'anxious');
 
+
   const numSad = filteringSad.length;
   const numHappy = filteringHappy.length;
   const numAnxious = filteringAnxious.length;
@@ -226,9 +227,10 @@ export default function Statistics({entry}) {
       </div>
 {/* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */}
 {/* entries below */}
-      <div>
+      
+      
+      {/* <div>
         <div className='sadbox'>
-          {/* {console.log(entry)} */}
           <h3>Sad</h3>
           <div style={{color: 'red'}}>Event:</div>
             <div>
@@ -275,7 +277,7 @@ export default function Statistics({entry}) {
                 {filteringAnxious.map((ent) => <Entryitembehavior ent={ent} key={ent.id}></Entryitembehavior>)}
             </div>
         </div>
-      </div>
+      </div> */}
 
     </div>
   )
