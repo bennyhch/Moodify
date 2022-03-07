@@ -1,6 +1,6 @@
 import React from 'react';
 import moment from 'moment';
-import './CSS/Entryitemevent.css';
+import './CSS/Entryitem.css';
 import WordCloud from 'react-d3-cloud'; 
 import Wordcloud from './Wordcloud';
 

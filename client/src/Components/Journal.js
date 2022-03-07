@@ -228,17 +228,30 @@ export default function Journal({entry}) {
 								<div className='textcontainer'>
 									<p>{filteringSad.map((ent) => <Entryitemevent ent={ent} key={ent.id} entry={sortDate(entry)}></Entryitemevent>)}</p>
 								</div>
-								{/* ////// */}
 								<div className='cloudcontainer'>
 									<WordCloud width={500} height={500} data={arrCloudSadEvent} />
 								</div>
 							</div>
 						</Panel>
+
 						<Panel header="Thought" key="2">
-							<p>{filteringSad.map((ent) => <Entryitemthought ent={ent} key={ent.id}></Entryitemthought>)}</p>
+							<div className='container'>
+								<div className='textcontainer'>
+									<p>{filteringSad.map((ent) => <Entryitemthought ent={ent} key={ent.id}></Entryitemthought>)}</p>
+								</div>
+								<div className='cloudcontainer'>
+									<WordCloud width={500} height={500} data={arrCloudSadThought} />
+								</div>
+							</div>
 						</Panel>
+
 						<Panel header="Behaviour" key="3">
-							<p>{filteringSad.map((ent) => <Entryitembehavior ent={ent} key={ent.id}></Entryitembehavior>)}</p>
+							<div className='textcontainer'>
+								<p>{filteringSad.map((ent) => <Entryitembehavior ent={ent} key={ent.id}></Entryitembehavior>)}</p>
+							</div>
+							<div className='cloudcontainer'>
+								<WordCloud width={500} height={500} data={arrCloudSadBehavior} />
+							</div>
 						</Panel>
   				</Collapse>
         </div>
@@ -247,13 +260,30 @@ export default function Journal({entry}) {
           <h3>Happy</h3>
 					<Collapse >
 						<Panel header="Event" key="1">
-							<p>{filteringHappy.map((ent) => <Entryitemevent ent={ent} key={ent.id}></Entryitemevent>)}</p>
+							<div className='textcontainer'>
+								<p>{filteringHappy.map((ent) => <Entryitemevent ent={ent} key={ent.id}></Entryitemevent>)}</p>
+							</div>
+							<div className='cloudcontainer'>
+								<WordCloud width={500} height={500} data={arrCloudHappyEvent} />
+							</div>
 						</Panel>
+
 						<Panel header="Thought" key="2">
-							<p>{filteringHappy.map((ent) => <Entryitemthought ent={ent} key={ent.id}></Entryitemthought>)}</p>
+							<div className='textcontainer'>
+								<p>{filteringHappy.map((ent) => <Entryitemthought ent={ent} key={ent.id}></Entryitemthought>)}</p>
+							</div>
+							<div className='cloudcontainer'>
+								<WordCloud width={500} height={500} data={arrCloudHappyThought} />
+							</div>
 						</Panel>
+
 						<Panel header="Behaviour" key="3">
-							<p>{filteringHappy.map((ent) => <Entryitembehavior ent={ent} key={ent.id}></Entryitembehavior>)}</p>
+							<div className='textcontainer'>
+								<p>{filteringHappy.map((ent) => <Entryitembehavior ent={ent} key={ent.id}></Entryitembehavior>)}</p>
+							</div>
+							<div className='cloudcontainer'>
+								<WordCloud width={500} height={500} data={arrCloudHappyBehavior} />
+							</div>
 						</Panel>
   				</Collapse>
         </div>
@@ -262,13 +292,29 @@ export default function Journal({entry}) {
           <h3>Anxiety</h3>
 					<Collapse >
 						<Panel header="Event" key="1">
-							<p>{filteringAnxious.map((ent) => <Entryitemevent ent={ent} key={ent.id}></Entryitemevent>)}</p>
+							<div className='textcontainer'>
+								<p>{filteringAnxious.map((ent) => <Entryitemevent ent={ent} key={ent.id}></Entryitemevent>)}</p>
+							</div>
+							<div className='cloudcontainer'>
+								<WordCloud width={500} height={500} data={arrCloudAnxiousEvent} />
+							</div>
 						</Panel>
+
 						<Panel header="Thought" key="2">
-							<p>{filteringAnxious.map((ent) => <Entryitemthought ent={ent} key={ent.id}></Entryitemthought>)}</p>
+							<div className='textcontainer'>
+								<p>{filteringAnxious.map((ent) => <Entryitemthought ent={ent} key={ent.id}></Entryitemthought>)}</p>
+							</div>
+							<div className='cloudcontainer'>
+								<WordCloud width={500} height={500} data={arrCloudAnxiousThought} />
+							</div>
 						</Panel>
 						<Panel header="Behaviour" key="3">
-							<p>{filteringAnxious.map((ent) => <Entryitembehavior ent={ent} key={ent.id}></Entryitembehavior>)}</p>
+							<div className='textcontainer'>
+								<p>{filteringAnxious.map((ent) => <Entryitembehavior ent={ent} key={ent.id}></Entryitembehavior>)}</p>
+							</div>
+							<div className='cloudcontainer'>
+								<WordCloud width={500} height={500} data={arrCloudAnxiousBehavior} />
+							</div>
 						</Panel>
   				</Collapse>
         </div>
