@@ -1,8 +1,14 @@
 import React from 'react'
+////
+import 'antd/dist/antd.css';
+import { Collapse } from 'antd';
+////
 import moment from 'moment';
 import Entryitembehavior from './Entryitembehavior';
 import Entryitemevent from './Entryitemevent';
 import Entryitemthought from './Entryitemthought';
+
+const { Panel } = Collapse;
 
 
 
@@ -12,7 +18,6 @@ export default function Journal({entry}) {
   const filteringHappy = entry.filter(oneEntry => oneEntry.emotion === 'happy');
   const filteringAnxious = entry.filter(oneEntry => oneEntry.emotion === 'anxious');
 
-  	
 	const dayOfTheWeekSad =  filteringSad.map((one) => moment(one.date).format('dddd'));
   const countsSad = {};
   dayOfTheWeekSad.forEach((x) => {
@@ -33,55 +38,55 @@ export default function Journal({entry}) {
 
   return (
     <div>
+
     	<div>
         <div className='sadbox'>
           <h3>Sad</h3>
-          <div style={{color: 'red'}}>Event:</div>
-            <div>
-              {filteringSad.map((ent) => <Entryitemevent ent={ent} key={ent.id}></Entryitemevent>)}
-            </div>
-          <div style={{color: 'red'}}>Thought:</div>
-            <div>
-                {filteringSad.map((ent) => <Entryitemthought ent={ent} key={ent.id}></Entryitemthought>)}
-            </div>
-          <div style={{color: 'red'}}>Behaviour:</div>
-            <div>
-                {filteringSad.map((ent) => <Entryitembehavior ent={ent} key={ent.id}></Entryitembehavior>)}
-            </div>
+					<Collapse >
+						<Panel header="Event" key="1">
+							<p>{filteringSad.map((ent) => <Entryitemevent ent={ent} key={ent.id}></Entryitemevent>)}</p>
+						</Panel>
+						<Panel header="Thought" key="2">
+							<p>{filteringSad.map((ent) => <Entryitemthought ent={ent} key={ent.id}></Entryitemthought>)}</p>
+						</Panel>
+						<Panel header="Behaviour" key="3">
+							<p>{filteringSad.map((ent) => <Entryitembehavior ent={ent} key={ent.id}></Entryitembehavior>)}</p>
+						</Panel>
+  				</Collapse>
         </div>
 
         <div className='happybox'>
           <h3>Happy</h3>
-          <div style={{color: 'blue'}}>Event:</div>
-            <div>
-              {filteringHappy.map((ent) => <Entryitemevent ent={ent} key={ent.id}></Entryitemevent>)}
-            </div>
-          <div style={{color: 'blue'}}>Thought:</div>
-            <div>
-                {filteringHappy.map((ent) => <Entryitemthought ent={ent} key={ent.id}></Entryitemthought>)}
-            </div>
-          <div style={{color: 'blue'}}>Behaviour:</div>
-            <div>
-                {filteringHappy.map((ent) => <Entryitembehavior ent={ent} key={ent.id}></Entryitembehavior>)}
-            </div>
+					<Collapse >
+						<Panel header="Event" key="1">
+							<p>{filteringHappy.map((ent) => <Entryitemevent ent={ent} key={ent.id}></Entryitemevent>)}</p>
+						</Panel>
+						<Panel header="Thought" key="2">
+							<p>{filteringHappy.map((ent) => <Entryitemthought ent={ent} key={ent.id}></Entryitemthought>)}</p>
+						</Panel>
+						<Panel header="Behaviour" key="3">
+							<p>{filteringHappy.map((ent) => <Entryitembehavior ent={ent} key={ent.id}></Entryitembehavior>)}</p>
+						</Panel>
+  				</Collapse>
         </div>
 
         <div className='anxiousbox'>
           <h3>Anxiety</h3>
-          <div style={{color: 'green'}}>Event:</div>
-            <div>
-              {filteringAnxious.map((ent) => <Entryitemevent ent={ent} key={ent.id}></Entryitemevent>)}
-            </div>
-          <div style={{color: 'green'}}>Thought:</div>
-            <div>
-                {filteringAnxious.map((ent) => <Entryitemthought ent={ent} key={ent.id}></Entryitemthought>)}
-            </div>
-          <div style={{color: 'green'}}>Behaviour:</div>
-            <div>
-                {filteringAnxious.map((ent) => <Entryitembehavior ent={ent} key={ent.id}></Entryitembehavior>)}
-            </div>
+					<Collapse >
+						<Panel header="Event" key="1">
+							<p>{filteringAnxious.map((ent) => <Entryitemevent ent={ent} key={ent.id}></Entryitemevent>)}</p>
+						</Panel>
+						<Panel header="Thought" key="2">
+							<p>{filteringAnxious.map((ent) => <Entryitemthought ent={ent} key={ent.id}></Entryitemthought>)}</p>
+						</Panel>
+						<Panel header="Behaviour" key="3">
+							<p>{filteringAnxious.map((ent) => <Entryitembehavior ent={ent} key={ent.id}></Entryitembehavior>)}</p>
+						</Panel>
+  				</Collapse>
         </div>
+
       </div>
+
     </div>
   )
 }

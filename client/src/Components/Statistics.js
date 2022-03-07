@@ -6,9 +6,6 @@ import React, { PureComponent, useState, useCallback } from 'react';
 import { BarChart, Bar, Cell, ReferenceLine, PieChart, Pie, Sector, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 
-
-
-
 export default function Statistics({entry}) {
   
   const filteringSad = entry.filter(oneEntry => oneEntry.emotion === 'sad');
@@ -274,8 +271,8 @@ export default function Statistics({entry}) {
 
           </LineChart>
         </div>
-        
-        <div className='barchar' >
+
+        <div className='barchar' style={{height: 500, width: 600}}>
           <ResponsiveContainer >
             <BarChart
               width={500}

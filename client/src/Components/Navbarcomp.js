@@ -11,6 +11,7 @@ import Emotions from './Emotions';
 import Journal from './Journal';
 import Statistics from './Statistics';
 import Wordcloud from './Wordcloud';
+// import './CSS/Navbarcomp.css';
 
 export default function Navbarcomp({entry, setEntry}) {
   return (
@@ -18,7 +19,7 @@ export default function Navbarcomp({entry, setEntry}) {
       <div>
         <Navbar bg="dark" variant={"dark"} expand="lg">
           {/* <Navbar.Brand href="#home">Moodify - Be Your Own Therapist</Navbar.Brand> */}
-          <Navbar.Brand href="/">Moodify - Be Your Own Therapist</Navbar.Brand>
+          <Navbar.Brand href="/">Moodify </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
@@ -28,17 +29,15 @@ export default function Navbarcomp({entry, setEntry}) {
               <Nav.Link as={Link} to={'/journal'}>Journal</Nav.Link>
               <Nav.Link as={Link} to={'/wordcloud'}>Word Cloud</Nav.Link>
 
-              {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-              </NavDropdown> */}
+              <NavDropdown title="Dropdown" id="basic-nav-dropdown">
+                <NavDropdown.Item href="#action/3.1">Mental Health Crisis Helplines</NavDropdown.Item>
+                <NavDropdown.Item href="#action/3.2">Meditation Exercise</NavDropdown.Item>
+              </NavDropdown>
             </Nav>
           </Navbar.Collapse>
         </Navbar>
       </div>
+
       <div>
         <Routes>
             <Route exact path="/" element={<Emotions entry={entry} setEntry={setEntry}/>} />

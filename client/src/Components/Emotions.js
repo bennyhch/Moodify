@@ -1,14 +1,22 @@
 import React, {useState} from 'react'
+// ////////////////
+// import TextField from '@mui/material/TextField';
+// import AdapterDateFns from '@mui/lab/AdapterDateFns';
+// import LocalizationProvider from '@mui/lab/LocalizationProvider';
+// import DateTimePicker from '@mui/lab/DateTimePicker';
+// import Stack from '@mui/material/Stack';
+// ////////////////
 import { postOneEntry } from '../Services/ApiClient';
 import anxiousFace from './../images/anxious.png';
 import sadFace from'./../images/sad.png';
 import happyFace from './../images/happy.png';
 import './CSS/Emotions.css';
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"></link>
 
 
 export default function Emotions({setEntry}) {
-  
+  // const [value, setValue] = React.useState(new Date());
+
   const [emojiType, setEmojiType] = useState("");
 
 	const sumbitHandler = (e) => {
@@ -32,7 +40,7 @@ export default function Emotions({setEntry}) {
 			e.target.usertriggeringevent.value = '';
 			e.target.userthought.value = '';
 			e.target.userbehavior.value = '';
-			e.target.userdate.value = null;
+			e.target.userdate.value = new Date();
 		})
 		.catch(e => console.log(e));
 	}
@@ -46,24 +54,19 @@ export default function Emotions({setEntry}) {
     <div>
         <form onSubmit={sumbitHandler}>
             <div className='question'>How you feeling?</div>
-            {/* <select name="useremotions">
-                <option value="sad">Sad</option>
-                <option value="anxious">Anxious</option>
-                <option value="happy">Happy</option>
-            </select> */}
-{/* checkbox experiment */}
-            <div >
-              <label>
+
+            <div className='emoji-container'>
+              <label className='anxiousemoji'>
                 <input type="radio" value='anxious' name="anxious"  checked={emojiType === 'anxious'} onChange={onChangeValue}/> <img src={anxiousFace} />
               </label>
-              <label>
+              <label className='sademoji'>
                 <input type="radio" value='sad' name="sad" checked={emojiType === 'sad'} onChange={onChangeValue}/> <img src={sadFace} />
               </label>
-              <label>
+              <label className='happyemoji'>
                 <input type="radio" value='happy' name="happy" checked={emojiType === 'happy'} onChange={onChangeValue}/> <img src={happyFace} />
               </label>
             </div>
-{/* checkbox experiment  */}
+
             <div className='question'>Triggering Event...</div>
             <input type='text' name='usertriggeringevent' placeholder='I failed the test...' required/>
 
@@ -76,8 +79,23 @@ export default function Emotions({setEntry}) {
             <div className='question'>Date and Time</div>
             <input type='datetime-local' name='userdate' required/>
 
+            {/* ////////////// */}
+            {/* <LocalizationProvider dateAdapter={AdapterDateFns}>
+              <Stack spacing={3}>
+                <DateTimePicker
+                  renderInput={(params) => <TextField {...params} />}
+                  value={value}
+                  onChange={(newValue) => {
+                    setValue(newValue);
+                  }}
+                />
+              </Stack>
+            </LocalizationProvider> */}
+            {/* ////////////// */}
+
             <button type='submit'>Submit</button>
         </form>
+
     </div>
   )
 }
