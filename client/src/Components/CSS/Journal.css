@@ -1,0 +1,11 @@
+.container {
+  display: flex;
+}
+
+.cloudcontainer {
+  /* border: 2px solid red; */
+  width: 35%;
+  justify-content: center;
+  /* align-items: center; */
+  /* padding-top: 10%; */
+}

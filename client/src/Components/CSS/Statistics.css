@@ -1,0 +1,54 @@
+.charts {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.firstrow {
+  display: flex;
+  gap: 16px;
+}
+
+#linechart {
+  margin-top: 16px;
+  margin-bottom: 3%;
+  display: flex;
+  justify-content: center;
+  width: 50%;
+  padding: 5px;
+  /* box-shadow: 5px 10px 8px #888888; */
+  /* box-shadow: 0 0 10px 10px #888888; */
+
+  /* border: 2px solid red; */
+  padding-top: 50px;
+  margin-left: 2%;
+}
+
+h1 {
+  text-align: center;
+  /* border: 5px solid red; */
+  padding-top: 2%;
+  padding-bottom: 5%;
+}
+
+#barchart {
+  /* border: 2px solid red; */
+  margin-top: 16px;
+  margin-bottom: 3%;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 5px;
+  /* box-shadow: 5px 10px 8px #888888; */
+  /* box-shadow: 0 0 10px 10px #888888; */
+}
+
+#piechart {
+  /* border: 2px solid green; */
+  margin-bottom: 3%;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  /* padding: 5px; */
+  /* box-shadow: 5px 10px 8px #888888; */
+}

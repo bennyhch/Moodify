@@ -1,0 +1,1 @@
+export const sortDate = (arr) => arr.sort((a, b) => new Date(b.date) - new Date(a.date))

@@ -11,13 +11,14 @@ import Emotions from './Emotions';
 import Journal from './Journal';
 import Statistics from './Statistics';
 import Wordcloud from './Wordcloud';
+import { sortDate } from '../utilities/sort';
 // import './CSS/Navbarcomp.css';
 
 export default function Navbarcomp({entry, setEntry}) {
   return (
     <Router>
       <div>
-        <Navbar bg="dark" variant={"dark"} expand="lg">
+        <Navbar bg="light" variant={"light"} expand="lg">
           {/* <Navbar.Brand href="#home">Moodify - Be Your Own Therapist</Navbar.Brand> */}
           <Navbar.Brand href="/">Moodify </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -29,7 +30,7 @@ export default function Navbarcomp({entry, setEntry}) {
               <Nav.Link as={Link} to={'/journal'}>Journal</Nav.Link>
               <Nav.Link as={Link} to={'/wordcloud'}>Word Cloud</Nav.Link>
 
-              <NavDropdown title="Dropdown" id="basic-nav-dropdown">
+              <NavDropdown title="More info" id="basic-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">Mental Health Crisis Helplines</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">Meditation Exercise</NavDropdown.Item>
               </NavDropdown>
@@ -42,7 +43,7 @@ export default function Navbarcomp({entry, setEntry}) {
         <Routes>
             <Route exact path="/" element={<Emotions entry={entry} setEntry={setEntry}/>} />
             <Route exact path="/statistics" element={<Statistics entry={entry}/>} />
-            <Route exact path="/journal" element={<Journal entry={entry} />} /> 
+            <Route exact path="/journal" element={<Journal entry={sortDate(entry)} />} /> 
             <Route exact path="/wordcloud" element={<Wordcloud entry={entry} />} /> 
         </Routes>
       </div>

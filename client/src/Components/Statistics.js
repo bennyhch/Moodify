@@ -4,7 +4,7 @@ import Entryitembehavior from './Entryitembehavior';
 import moment from 'moment';
 import React, { PureComponent, useState, useCallback } from 'react';
 import { BarChart, Bar, Cell, ReferenceLine, PieChart, Pie, Sector, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-
+import './CSS/Statistics.css';
 
 export default function Statistics({entry}) {
   
@@ -229,73 +229,75 @@ export default function Statistics({entry}) {
 
   return (
     <div>
+          
+      <h1>Experience of Positive And Negative Emotions By Week</h1>
       <div className='charts'>
-
-        <div className='piechart'>
-          <PieChart width={400} height={400}>
-            <Pie
-              activeIndex={activeIndex}
-              activeShape={renderActiveShape}
-              data={dataPie}
-              cx={200}
-              cy={200}
-              innerRadius={60}
-              outerRadius={80}
-              fill="#8884d8"
-              dataKey="value"
-              onMouseEnter={onPieEnter}
-            />
-          </PieChart>
-        </div>
-      
-        <div className='linechart'>
-          <LineChart
-            width={500}
-            height={300}
-            data={data}
-            margin={{
-              top: 5,
-              right: 30,
-              left: 20,
-              bottom: 5
-            }}
-          >
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="name" />
-            <YAxis />
-            <Tooltip />
-            <Legend />
-            <Line type="monotone" dataKey="Sad" stroke="#8884d8" activeDot={{ r: 5 }}/>
-            <Line type="monotone" dataKey="Happy" stroke="#82ca9d" activeDot={{ r: 5 }}/>
-            <Line type="monotone" dataKey="Anxious" stroke="#a3375f" activeDot={{ r: 5 }}/>
-
-          </LineChart>
-        </div>
-
-        <div className='barchar' style={{height: 500, width: 600}}>
-          <ResponsiveContainer >
-            <BarChart
+        <div className='firstrow'>
+          <div id='linechart'>
+            <LineChart
               width={500}
               height={300}
-              data={dataPosAndNeg}
+              data={data}
               margin={{
                 top: 5,
                 right: 30,
                 left: 20,
-                bottom: 5,
-              }}
-            >
+                bottom: 5
+              }}>
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="name" />
               <YAxis />
               <Tooltip />
               <Legend />
-              <ReferenceLine y={0} stroke="#000" />
-              <Bar dataKey="Positivity" fill="#8884d8" />
-              <Bar dataKey="Negativity" fill="#82ca9d" />
-            </BarChart>
-          </ResponsiveContainer>  
+              <Line type="monotone" dataKey="Sad" stroke="#8884d8" activeDot={{ r: 5 }}/>
+              <Line type="monotone" dataKey="Happy" stroke="#82ca9d" activeDot={{ r: 5 }}/>
+              <Line type="monotone" dataKey="Anxious" stroke="#a3375f" activeDot={{ r: 5 }}/>
+            </LineChart>
+          </div>
+
+          <div id='barchart' style={{height: 400, width: 500}}>
+            <ResponsiveContainer >
+              <BarChart
+                width={500}
+                height={300}
+                data={dataPosAndNeg}
+                margin={{
+                  top: 5,
+                  right: 30,
+                  left: 20,
+                  bottom: 5,
+                }}>
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="name" />
+                <YAxis />
+                <Tooltip />
+                <Legend />
+                <ReferenceLine y={0} stroke="#000" />
+                <Bar dataKey="Positivity" fill="#8884d8" />
+                <Bar dataKey="Negativity" fill="#82ca9d" />
+              </BarChart>
+            </ResponsiveContainer>  
+          </div>
         </div>
+          <div id='piechart'>
+            <PieChart width={400} height={400}>
+              <Pie
+                activeIndex={activeIndex}
+                activeShape={renderActiveShape}
+                data={dataPie}
+                cx={200}
+                cy={200}
+                innerRadius={60}
+                outerRadius={80}
+                fill="#8884d8"
+                dataKey="value"
+                onMouseEnter={onPieEnter}
+              />
+            </PieChart>
+          </div>
+        
+        
+
 
       </div>
 

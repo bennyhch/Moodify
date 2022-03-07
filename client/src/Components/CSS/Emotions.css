@@ -1,18 +1,33 @@
 form {
-  background-color: #121212;
+  background-color: #f4f4ff;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+  color: #0b0b00;
+  padding-left: 50px;
+  padding-right: 50px;
 }
 img {
-  background-color: #f4fff4;
+  transition: 0.8s;
+}
+
+h1 {
+  padding-top: 5%;
+}
+
+label {
+  border-radius: 40px;
 }
 
 .emoji-container {
   display: flex;
   justify-content: space-evenly;
-  background-color: #fff4f4;
-  border: 5px solid white;
+  /* background-color: #fff4f4; */
+  margin-top: 5%;
+  margin-bottom: 2%;
+  border-radius: 5px;
+  gap: 50px;
 }
 
 [type="radio"] {
@@ -27,5 +42,60 @@ img {
 }
 
 [type="radio"]:checked + img {
-  outline: 2px solid #f00;
+  /* outline: 2px solid #f00; */
+  /* background-color: #f4fff4; */
+  background-color: #ffdbdb;
+  border-radius: 40px;
+  border: 1px solid black;
+}
+
+textarea {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.question {
+  /* border: 2px solid red; */
+  margin-top: 5%;
+  margin-bottom: 1%;
+}
+
+.emotionlabel {
+  text-align: center;
+}
+
+.question-container {
+  width: 50%;
+}
+
+.button {
+  margin-top: 5%;
+  background-color: black;
+}
+
+@media only screen and (max-width: 540px) {
+  form {
+    background-color: yellow;
+  }
+  .emoji-container {
+    flex-direction: column;
+    /* align-self: flex-end; */
+    margin-top: 10%;
+  }
+  label {
+    flex-shrink: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  img {
+    height: auto;
+    max-height: 50%;
+    max-width: 50%;
+    border: 2px solid red;
+    text-align: center;
+  }
 }
