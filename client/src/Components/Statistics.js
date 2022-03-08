@@ -18,70 +18,60 @@ export default function Statistics({entry}) {
   dayOfTheWeekSad.forEach((x) => {
     countsSad[x] = (countsSad[x] || 0) + 1;
   });
-  console.log('counts of Sad day', countsSad);
+  // console.log('counts of Sad day', countsSad);
 
   const dayOfTheWeekHappy =  filteringHappy.map((one) => moment(one.date).format('dddd'));
   const countsHappy = {};
   dayOfTheWeekHappy.forEach((x) => {
     countsHappy[x] = (countsHappy[x] || 0) + 1;
   });
-
-  console.log('countsSad',countsSad);
+  // console.log('countsSad',countsSad);
 
   const dayOfTheWeekAnxious = filteringAnxious.map((one) => moment(one.date).format('dddd'));
   const countsAnxious = {};
   dayOfTheWeekAnxious.forEach((x) => {
     countsAnxious[x] = (countsAnxious[x] || 0) + 1;
   });
-
-  console.log('countsAnxious.Tuesday',countsAnxious.Tuesday || 0);
-
+  // console.log('countsAnxious.Tuesday',countsAnxious.Tuesday || 0);
 
 
-  const numNeg = -(numSad + numAnxious);
+
   ////////////////////////////////////////////////
   const dataPosAndNeg = [
     {
       name: 'Mon',
       Positivity: (countsHappy.Monday || 0),
       Negativity: (-( (countsSad.Monday || 0) + (countsAnxious.Monday || 0)) || 0),
-      // amt: 4,
     },
     {
       name: 'Tues',
       Positivity: (countsHappy.Tuesday || 0),
       Negativity: (-( (countsSad.Tuesday || 0) + (countsAnxious.Tuesday || 0)) || 0),
-      // amt: 2,
     },
     {
       name: 'Wed',
       Positivity: (countsHappy.Wednesday || 0),
       Negativity: (-( (countsSad.Wednesday || 0) + (countsAnxious.Wednesday || 0)) || 0),
-      // amt: 3,
     },
     {
       name: 'Thurs',
       Positivity: (countsHappy.Thursday || 0),
       Negativity: (-( (countsSad.Thursday || 0) + (countsAnxious.Thursday || 0)) || 0),
-      // amt: 2,
     },
     {
       name: 'Fri',
       Positivity: (countsHappy.Friday || 0),
       Negativity: (-( (countsSad.Friday || 0) + (countsAnxious.Friday || 0)) || 0),
-      // amt: 1,
     },
     {
       name: 'Sat',
       Positivity: (countsHappy.Saturday || 0),
       Negativity: (-( (countsSad.Saturday || 0) + (countsAnxious.Saturday || 0)) || 0),
-      // amt: 2,
     },
     {
       name: 'Sun',
       Positivity: (countsHappy.Sunday || 0),
       Negativity: (-( (countsSad.Sunday || 0) + (countsAnxious.Sunday || 0)) || 0),
-      // amt: 2,
     },
   ];
 
@@ -298,7 +288,6 @@ export default function Statistics({entry}) {
             </PieChart>
           </div>
       </div>
-
     </div>
   )
 }

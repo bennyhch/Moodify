@@ -10,7 +10,6 @@ import './CSS/Emotions.css';
 
 
 export default function Emotions({setEntry}) {
-  // const [value, setValue] = React.useState(new Date());
 
   const [emojiType, setEmojiType] = useState("");
 
@@ -23,10 +22,6 @@ export default function Emotions({setEntry}) {
 			behavior: e.target.userbehavior.value,
 			date: e.target.userdate.value
 	};
-	// console.log(entry, 'entry');
-  console.log('e', e);
-  console.log('e.target', e.target);
-  console.log('emoji Type', emojiType);
 
 	postOneEntry(entry)
 		.then(newEntry => {
@@ -42,55 +37,49 @@ export default function Emotions({setEntry}) {
 
   function onChangeValue(event) {
     setEmojiType(event.target.value);
-    console.log(event.target.value);
   }
 
   return (
     <div>
-        <form onSubmit={sumbitHandler}>
-            <h1>How you feeling?</h1>
-            <div className='emoji-container'>
+      <form onSubmit={sumbitHandler}>
+        <h1>How you feeling?</h1>
+        <div className='emoji-container'>
+          <label className='anxiousemoji'>
+            <div className='emotionlabel'>ANXIOUS</div>
+            <input type="radio" value='anxious' name="anxious" checked={emojiType === 'anxious'} onChange={onChangeValue}/> <img src={anxiousFace} />
+          </label>
 
-                <label className='anxiousemoji'>
-                  <div className='emotionlabel'>ANXIOUS</div>
-                  <input type="radio" value='anxious' name="anxious"  checked={emojiType === 'anxious'} onChange={onChangeValue}/> <img src={anxiousFace} />
-                </label>
+          <label className='sademoji'>
+            <div className='emotionlabel'>SAD</div>
+            <input type="radio" value='sad' name="sad" checked={emojiType === 'sad'} onChange={onChangeValue}/> <img src={sadFace}/>
+          </label>
 
-                <label className='sademoji'>
-                  <div className='emotionlabel'>SAD</div>
-                  <input type="radio" value='sad' name="sad" checked={emojiType === 'sad'} onChange={onChangeValue}/> <img src={sadFace}/>
-                </label>
+          <label className='happyemoji'>
+            <div className='emotionlabel'>HAPPY</div>
+            <input type="radio" value='happy' name="happy" checked={emojiType === 'happy'} onChange={onChangeValue}/> <img src={happyFace} />
+          </label>
+        </div>
 
-                <label className='happyemoji'>
-                  <div className='emotionlabel'>HAPPY</div>
-                  <input type="radio" value='happy' name="happy" checked={emojiType === 'happy'} onChange={onChangeValue}/> <img src={happyFace} />
-                </label>
+        <div className='question-container'>
+          <div className='question'>Triggering Event?</div>
+          <textarea type='text' name='usertriggeringevent' placeholder='e.g., I failed the test...' required/>
 
-            </div>
+          <div className='question'>What's on your mind?</div>
+          <textarea type='text' name='userthought' placeholder="e.g., I'm such a loser..." required/>
 
-            <div className='question-container'>
-              <div className='question'>Triggering Event?</div>
-              <textarea type='text' name='usertriggeringevent' placeholder='e.g., I failed the test...' required/>
+          <div className='question'>How did you react to it?</div>
+          <textarea type='text' name='userbehavior' placeholder='e.g., I cried...' required/>
 
-              <div className='question'>What's on your mind?</div>
-              <textarea type='text' name='userthought' placeholder="e.g., I'm such a loser..." required/>
+          <div className='question'>Date and Time</div>
+          <input type='datetime-local' name='userdate' required/>
 
-              <div className='question'>How did you react to it?</div>
-              <textarea type='text' name='userbehavior' placeholder='e.g., I cried...' required/>
+          <div>
+            <Button className='submitbutton' type='submit' variant="outline-info">Submit</Button>{' '}
+            {/* https://react-bootstrap.github.io/components/buttons/#button-props */}
+          </div>
 
-              <div className='question'>Date and Time</div>
-              <input type='datetime-local' name='userdate' required/>
-
-              <div>
-                {/* <button type='submit'>Submit</button> */}
-                <Button className='submitbutton' type='submit' variant="outline-info">Submit</Button>{' '}
-                {/* https://react-bootstrap.github.io/components/buttons/#button-props */}
-              </div>
-
-            </div>
-            
-        </form>
-
+        </div>
+      </form>
     </div>
   )
 }

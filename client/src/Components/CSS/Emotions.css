@@ -86,27 +86,3 @@ textarea[type="text"]::placeholder {
 .submitbutton:hover {
   background-color: #dbdbff !important;
 }
-
-/* @media only screen and (max-width: 540px) {
-  form {
-    background-color: yellow;
-  }
-  .emoji-container {
-    flex-direction: column;
-    margin-top: 10%;
-  }
-  label {
-    flex-shrink: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  img {
-    height: auto;
-    max-height: 50%;
-    max-width: 50%;
-    border: 2px solid red;
-    text-align: center;
-  }
-} */

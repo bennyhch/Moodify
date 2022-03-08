@@ -1,11 +1,6 @@
 import React from 'react'
-import ReactDOM from "react-dom";
 import WordCloud from 'react-d3-cloud'; 
 
-
-import Entryitembehavior from './Entryitembehavior';
-import Entryitemevent from './Entryitemevent';
-import Entryitemthought from './Entryitemthought';
 
 
 export default function Wordcloud({entry}) {
