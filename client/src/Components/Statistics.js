@@ -230,7 +230,7 @@ export default function Statistics({entry}) {
   return (
     <div>
           
-      <h1>Experience of Positive And Negative Emotions By Week</h1>
+      <h1>Experience of Positive And Negative Emotions By Day</h1>
       <div className='charts'>
         <div className='firstrow'>
           <div id='linechart'>

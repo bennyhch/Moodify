@@ -1,11 +1,25 @@
-.container {
+.collapsecontainer {
   display: flex;
+  /* border: 1px solid red; */
+  justify-content: space-around;
+  position: relative;
+}
+
+.textcontainer {
+  box-shadow: 0px 20px 50px -10px rgba(243, 206, 228, 0.2);
+  width: 50%;
+  vertical-align: middle;
+  /* display: flex; */
+  /* justify-content: space-between; */
+  /* align-items: center; */
+  /* flex: 1; */
 }
 
 .cloudcontainer {
-  /* border: 2px solid red; */
   width: 35%;
   justify-content: center;
-  /* align-items: center; */
-  /* padding-top: 10%; */
+  /* border: 1px solid green; */
+  width: 50%;
+  /* flex: 1; */
+  height: fit-content;
 }

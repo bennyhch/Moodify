@@ -2,9 +2,7 @@ import React from 'react'
 ////
 import 'antd/dist/antd.css';
 import { Collapse } from 'antd';
-////
 import WordCloud from 'react-d3-cloud'; 
-
 ///
 import moment from 'moment';
 import Entryitembehavior from './Entryitembehavior';
@@ -12,10 +10,7 @@ import Entryitemevent from './Entryitemevent';
 import Entryitemthought from './Entryitemthought';
 import { sortDate } from '../utilities/sort';
 import './CSS/Journal.css'
-
 const { Panel } = Collapse;
-
-
 
 export default function Journal({entry}) {
 
@@ -91,7 +86,7 @@ export default function Journal({entry}) {
 		return arrSadBehavior;
 	});
 	const flattenedSadBehavior = [].concat(...arrSadBehavior);
-  const countsCloudSadBehavior = {};
+  	const countsCloudSadBehavior = {};
 	flattenedSadBehavior.forEach((wrd) => {
 		countsCloudSadBehavior[wrd] = (countsCloudSadBehavior[wrd] || 0) + 1;
 	});
@@ -156,8 +151,6 @@ export default function Journal({entry}) {
 		arrCloudHappyBehavior.push(obj);
   }
 
-
-
 	//// Anxiety 	//// Anxiety	//// Anxiety	//// Anxiety	//// Anxiety	//// Anxiety	//// Anxiety	//// Anxiety
   //anxious event
 	const arrAnxiousEvent = [];
@@ -214,7 +207,6 @@ export default function Journal({entry}) {
   }
 
 
-
 ////CHOAS STOPS FROM HERE ////////////////////////////////////////////////////
   return (
     <div>
@@ -222,105 +214,118 @@ export default function Journal({entry}) {
     	<div>
         <div className='sadbox'>
           <h3>Sad</h3>
-					<Collapse >
-						<Panel header="Event" key="1">
-							<div className='container'>
-								<div className='textcontainer'>
-									<p>{filteringSad.map((ent) => <Entryitemevent ent={ent} key={ent.id} entry={sortDate(entry)}></Entryitemevent>)}</p>
-								</div>
-								<div className='cloudcontainer'>
-									<WordCloud width={500} height={500} data={arrCloudSadEvent} />
-								</div>
+				<Collapse >
+					<Panel header="Event" key="1">
+						<div className='collapsecontainer'>
+							<div className='textcontainer'>
+								<div>{filteringSad.map((ent) => <Entryitemevent ent={ent} key={ent.id} entry={sortDate(entry)}></Entryitemevent>)}</div>
 							</div>
-						</Panel>
-
-						<Panel header="Thought" key="2">
-							<div className='container'>
-								<div className='textcontainer'>
-									<p>{filteringSad.map((ent) => <Entryitemthought ent={ent} key={ent.id}></Entryitemthought>)}</p>
-								</div>
-								<div className='cloudcontainer'>
-									<WordCloud width={500} height={500} data={arrCloudSadThought} />
-								</div>
+							<div className='cloudcontainer'>
+								<WordCloud width={500} height={500} data={arrCloudSadEvent} />
 							</div>
-						</Panel>
+						</div>
+					</Panel>
 
-						<Panel header="Behaviour" key="3">
+					<Panel header="Thought" key="2">
+						<div className='collapsecontainer'>
+							<div className='textcontainer'>
+								<p>{filteringSad.map((ent) => <Entryitemthought ent={ent} key={ent.id}></Entryitemthought>)}</p>
+							</div>
+							<div className='cloudcontainer'>
+								<WordCloud width={500} height={500} data={arrCloudSadThought} />
+							</div>
+						</div>
+					</Panel>
+
+					<Panel header="Behaviour" key="3">
+						<div className='collapsecontainer'>
 							<div className='textcontainer'>
 								<p>{filteringSad.map((ent) => <Entryitembehavior ent={ent} key={ent.id}></Entryitembehavior>)}</p>
 							</div>
 							<div className='cloudcontainer'>
 								<WordCloud width={500} height={500} data={arrCloudSadBehavior} />
 							</div>
-						</Panel>
+						</div>
+					</Panel>
   				</Collapse>
         </div>
 
         <div className='happybox'>
           <h3>Happy</h3>
-					<Collapse >
-						<Panel header="Event" key="1">
+				<Collapse >
+					<Panel header="Event" key="1">
+						<div className='collapsecontainer'>
 							<div className='textcontainer'>
 								<p>{filteringHappy.map((ent) => <Entryitemevent ent={ent} key={ent.id}></Entryitemevent>)}</p>
 							</div>
 							<div className='cloudcontainer'>
 								<WordCloud width={500} height={500} data={arrCloudHappyEvent} />
 							</div>
-						</Panel>
+						</div>
+					</Panel>
 
-						<Panel header="Thought" key="2">
+					<Panel header="Thought" key="2">
+						<div className='collapsecontainer'>
 							<div className='textcontainer'>
 								<p>{filteringHappy.map((ent) => <Entryitemthought ent={ent} key={ent.id}></Entryitemthought>)}</p>
 							</div>
 							<div className='cloudcontainer'>
 								<WordCloud width={500} height={500} data={arrCloudHappyThought} />
 							</div>
-						</Panel>
+						</div>
+					</Panel>
 
-						<Panel header="Behaviour" key="3">
+					<Panel header="Behaviour" key="3">
+						<div className='collapsecontainer'>
 							<div className='textcontainer'>
 								<p>{filteringHappy.map((ent) => <Entryitembehavior ent={ent} key={ent.id}></Entryitembehavior>)}</p>
 							</div>
 							<div className='cloudcontainer'>
 								<WordCloud width={500} height={500} data={arrCloudHappyBehavior} />
 							</div>
-						</Panel>
+						</div>
+					</Panel>
   				</Collapse>
         </div>
 
         <div className='anxiousbox'>
           <h3>Anxiety</h3>
-					<Collapse >
+				<Collapse >
 						<Panel header="Event" key="1">
-							<div className='textcontainer'>
-								<p>{filteringAnxious.map((ent) => <Entryitemevent ent={ent} key={ent.id}></Entryitemevent>)}</p>
-							</div>
-							<div className='cloudcontainer'>
-								<WordCloud width={500} height={500} data={arrCloudAnxiousEvent} />
+							<div className='collapsecontainer'>
+								<div className='textcontainer'>
+									<p>{filteringAnxious.map((ent) => <Entryitemevent ent={ent} key={ent.id}></Entryitemevent>)}</p>
+								</div>
+								<div className='cloudcontainer'>
+									<WordCloud width={500} height={500} data={arrCloudAnxiousEvent} />
+								</div>
 							</div>
 						</Panel>
 
 						<Panel header="Thought" key="2">
-							<div className='textcontainer'>
-								<p>{filteringAnxious.map((ent) => <Entryitemthought ent={ent} key={ent.id}></Entryitemthought>)}</p>
-							</div>
-							<div className='cloudcontainer'>
-								<WordCloud width={500} height={500} data={arrCloudAnxiousThought} />
+							<div className='collapsecontainer'>
+								<div className='textcontainer'>
+									<p>{filteringAnxious.map((ent) => <Entryitemthought ent={ent} key={ent.id}></Entryitemthought>)}</p>
+								</div>
+								<div className='cloudcontainer'>
+									<WordCloud width={500} height={500} data={arrCloudAnxiousThought} />
+								</div>
 							</div>
 						</Panel>
+
 						<Panel header="Behaviour" key="3">
-							<div className='textcontainer'>
-								<p>{filteringAnxious.map((ent) => <Entryitembehavior ent={ent} key={ent.id}></Entryitembehavior>)}</p>
-							</div>
-							<div className='cloudcontainer'>
-								<WordCloud width={500} height={500} data={arrCloudAnxiousBehavior} />
+							<div className='collapsecontainer'>
+								<div className='textcontainer'>
+									<p>{filteringAnxious.map((ent) => <Entryitembehavior ent={ent} key={ent.id}></Entryitembehavior>)}</p>
+								</div>
+								<div className='cloudcontainer'>
+									<WordCloud width={500} height={500} data={arrCloudAnxiousBehavior} />
+								</div>
 							</div>
 						</Panel>
   				</Collapse>
         </div>
-
       </div>
-
     </div>
   )
 }

@@ -8,12 +8,13 @@ form {
   padding-left: 50px;
   padding-right: 50px;
 }
+
 img {
   transition: 0.8s;
 }
 
 h1 {
-  padding-top: 5%;
+  padding-top: 10%;
 }
 
 label {

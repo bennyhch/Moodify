@@ -28,7 +28,7 @@ export default function Navbarcomp({entry, setEntry}) {
               <Nav.Link as={Link} to={'/'}>Home</Nav.Link>
               <Nav.Link as={Link} to={'/statistics'} >Statistics</Nav.Link>
               <Nav.Link as={Link} to={'/journal'}>Journal</Nav.Link>
-              <Nav.Link as={Link} to={'/wordcloud'}>Word Cloud</Nav.Link>
+              {/* <Nav.Link as={Link} to={'/wordcloud'}>Word Cloud</Nav.Link> */}
 
               <NavDropdown title="More info" id="basic-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">Mental Health Crisis Helplines</NavDropdown.Item>
@@ -44,7 +44,7 @@ export default function Navbarcomp({entry, setEntry}) {
             <Route exact path="/" element={<Emotions entry={entry} setEntry={setEntry}/>} />
             <Route exact path="/statistics" element={<Statistics entry={entry}/>} />
             <Route exact path="/journal" element={<Journal entry={sortDate(entry)} />} /> 
-            <Route exact path="/wordcloud" element={<Wordcloud entry={entry} />} /> 
+            {/* <Route exact path="/wordcloud" element={<Wordcloud entry={entry} />} />  */}
         </Routes>
       </div>
     </Router>
