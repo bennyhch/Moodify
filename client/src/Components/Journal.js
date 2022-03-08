@@ -10,6 +10,9 @@ import Entryitemevent from './Entryitemevent';
 import Entryitemthought from './Entryitemthought';
 import { sortDate } from '../utilities/sort';
 import './CSS/Journal.css'
+import anxiousFace from './../images/anxious.png';
+import sadFace from'./../images/sad.png';
+import happyFace from './../images/happy.png';
 const { Panel } = Collapse;
 
 export default function Journal({entry}) {
@@ -212,48 +215,50 @@ export default function Journal({entry}) {
     <div>
 
     	<div>
-        <div className='sadbox'>
-          <h3>Sad</h3>
-				<Collapse >
-					<Panel header="Event" key="1">
-						<div className='collapsecontainer'>
-							<div className='textcontainer'>
-								<div>{filteringSad.map((ent) => <Entryitemevent ent={ent} key={ent.id} entry={sortDate(entry)}></Entryitemevent>)}</div>
+        <div className='sadbox' className='journalboxes'>
+					<img className='faceJournal' src={sadFace}  />
+          <h1>Sad</h1>
+					<Collapse >
+						<Panel header="Event" key="1" className='headerjournal'>
+							<div className='collapsecontainer'>
+								<div className='textcontainer'>
+									<div>{filteringSad.map((ent) => <Entryitemevent ent={ent} key={ent.id} entry={sortDate(entry)}></Entryitemevent>)}</div>
+								</div>
+								<div className='cloudcontainer'>
+									<WordCloud width={500} height={500} data={arrCloudSadEvent} />
+								</div>
 							</div>
-							<div className='cloudcontainer'>
-								<WordCloud width={500} height={500} data={arrCloudSadEvent} />
-							</div>
-						</div>
-					</Panel>
+						</Panel>
 
-					<Panel header="Thought" key="2">
-						<div className='collapsecontainer'>
-							<div className='textcontainer'>
-								<p>{filteringSad.map((ent) => <Entryitemthought ent={ent} key={ent.id}></Entryitemthought>)}</p>
+						<Panel header="Thought" key="2" className='headerjournal'>
+							<div className='collapsecontainer'>
+								<div className='textcontainer'>
+									<p>{filteringSad.map((ent) => <Entryitemthought ent={ent} key={ent.id}></Entryitemthought>)}</p>
+								</div>
+								<div className='cloudcontainer'>
+									<WordCloud width={500} height={500} data={arrCloudSadThought} />
+								</div>
 							</div>
-							<div className='cloudcontainer'>
-								<WordCloud width={500} height={500} data={arrCloudSadThought} />
-							</div>
-						</div>
-					</Panel>
+						</Panel>
 
-					<Panel header="Behaviour" key="3">
-						<div className='collapsecontainer'>
-							<div className='textcontainer'>
-								<p>{filteringSad.map((ent) => <Entryitembehavior ent={ent} key={ent.id}></Entryitembehavior>)}</p>
+						<Panel header="Behaviour" key="3" className='headerjournal'>
+							<div className='collapsecontainer'>
+								<div className='textcontainer'>
+									<p>{filteringSad.map((ent) => <Entryitembehavior ent={ent} key={ent.id}></Entryitembehavior>)}</p>
+								</div>
+								<div className='cloudcontainer'>
+									<WordCloud width={500} height={500} data={arrCloudSadBehavior} />
+								</div>
 							</div>
-							<div className='cloudcontainer'>
-								<WordCloud width={500} height={500} data={arrCloudSadBehavior} />
-							</div>
-						</div>
-					</Panel>
+						</Panel>
   				</Collapse>
         </div>
 
-        <div className='happybox'>
-          <h3>Happy</h3>
+        <div className='happybox' className='journalboxes'>
+					<img className='faceJournal' src={happyFace}  />
+          <h1>Happy</h1>
 				<Collapse >
-					<Panel header="Event" key="1">
+					<Panel header="Event" key="1" className='headerjournal'>
 						<div className='collapsecontainer'>
 							<div className='textcontainer'>
 								<p>{filteringHappy.map((ent) => <Entryitemevent ent={ent} key={ent.id}></Entryitemevent>)}</p>
@@ -264,7 +269,7 @@ export default function Journal({entry}) {
 						</div>
 					</Panel>
 
-					<Panel header="Thought" key="2">
+					<Panel header="Thought" key="2" className='headerjournal'>
 						<div className='collapsecontainer'>
 							<div className='textcontainer'>
 								<p>{filteringHappy.map((ent) => <Entryitemthought ent={ent} key={ent.id}></Entryitemthought>)}</p>
@@ -275,7 +280,7 @@ export default function Journal({entry}) {
 						</div>
 					</Panel>
 
-					<Panel header="Behaviour" key="3">
+					<Panel header="Behaviour" key="3" className='headerjournal'>
 						<div className='collapsecontainer'>
 							<div className='textcontainer'>
 								<p>{filteringHappy.map((ent) => <Entryitembehavior ent={ent} key={ent.id}></Entryitembehavior>)}</p>
@@ -288,10 +293,11 @@ export default function Journal({entry}) {
   				</Collapse>
         </div>
 
-        <div className='anxiousbox'>
-          <h3>Anxiety</h3>
+        <div className='anxiousbox' className='journalboxes'>
+					<img className='faceJournal' src={anxiousFace}  />
+          <h1>Anxiety</h1>
 				<Collapse >
-						<Panel header="Event" key="1">
+						<Panel header="Event" key="1" className='headerjournal'>
 							<div className='collapsecontainer'>
 								<div className='textcontainer'>
 									<p>{filteringAnxious.map((ent) => <Entryitemevent ent={ent} key={ent.id}></Entryitemevent>)}</p>
@@ -302,7 +308,7 @@ export default function Journal({entry}) {
 							</div>
 						</Panel>
 
-						<Panel header="Thought" key="2">
+						<Panel header="Thought" key="2" className='headerjournal'>
 							<div className='collapsecontainer'>
 								<div className='textcontainer'>
 									<p>{filteringAnxious.map((ent) => <Entryitemthought ent={ent} key={ent.id}></Entryitemthought>)}</p>
@@ -313,7 +319,7 @@ export default function Journal({entry}) {
 							</div>
 						</Panel>
 
-						<Panel header="Behaviour" key="3">
+						<Panel header="Behaviour" key="3" className='headerjournal'>
 							<div className='collapsecontainer'>
 								<div className='textcontainer'>
 									<p>{filteringAnxious.map((ent) => <Entryitembehavior ent={ent} key={ent.id}></Entryitembehavior>)}</p>

@@ -1,3 +1,7 @@
+.statbody {
+  background-color: #f4f4ff;
+}
+
 .charts {
   display: flex;
   flex-direction: column;

@@ -83,7 +83,7 @@ export default function Emotions({setEntry}) {
 
               <div>
                 {/* <button type='submit'>Submit</button> */}
-                <Button className='button' type='submit' variant="outline-info">Submit</Button>{' '}
+                <Button className='submitbutton' type='submit' variant="outline-info">Submit</Button>{' '}
                 {/* https://react-bootstrap.github.io/components/buttons/#button-props */}
               </div>
 

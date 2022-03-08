@@ -1,3 +1,11 @@
-/* .navbar {
-  /* padding-left: 1%; */
-/* } */
+.topnavbar {
+  /* border: 1px solid black; */
+  padding-left: 1%;
+  background-color: #afbfdb;
+  font-family: "Comic Neue", cursive;
+}
+
+#title {
+  /* font-size: 30px; */
+  /* font-weight: 900; */
+}

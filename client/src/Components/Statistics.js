@@ -1,6 +1,3 @@
-import Entryitemevent from './Entryitemevent';
-import Entryitemthought from './Entryitemthought';
-import Entryitembehavior from './Entryitembehavior';
 import moment from 'moment';
 import React, { PureComponent, useState, useCallback } from 'react';
 import { BarChart, Bar, Cell, ReferenceLine, PieChart, Pie, Sector, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
@@ -21,20 +18,24 @@ export default function Statistics({entry}) {
   dayOfTheWeekSad.forEach((x) => {
     countsSad[x] = (countsSad[x] || 0) + 1;
   });
-  // console.log('counts of Sad day', countsSad);
+  console.log('counts of Sad day', countsSad);
 
   const dayOfTheWeekHappy =  filteringHappy.map((one) => moment(one.date).format('dddd'));
   const countsHappy = {};
   dayOfTheWeekHappy.forEach((x) => {
     countsHappy[x] = (countsHappy[x] || 0) + 1;
   });
-  console.log(countsSad);
+
+  console.log('countsSad',countsSad);
 
   const dayOfTheWeekAnxious = filteringAnxious.map((one) => moment(one.date).format('dddd'));
   const countsAnxious = {};
   dayOfTheWeekAnxious.forEach((x) => {
     countsAnxious[x] = (countsAnxious[x] || 0) + 1;
   });
+
+  console.log('countsAnxious.Tuesday',countsAnxious.Tuesday || 0);
+
 
 
   const numNeg = -(numSad + numAnxious);
@@ -43,44 +44,44 @@ export default function Statistics({entry}) {
     {
       name: 'Mon',
       Positivity: (countsHappy.Monday || 0),
-      Negativity: (-(countsSad.Monday + countsAnxious.Monday) || 0),
-      amt: 4,
+      Negativity: (-( (countsSad.Monday || 0) + (countsAnxious.Monday || 0)) || 0),
+      // amt: 4,
     },
     {
       name: 'Tues',
       Positivity: (countsHappy.Tuesday || 0),
-      Negativity: (-(countsSad.Tuesday + countsAnxious.Tuesday) || 0),
-      amt: 2,
+      Negativity: (-( (countsSad.Tuesday || 0) + (countsAnxious.Tuesday || 0)) || 0),
+      // amt: 2,
     },
     {
       name: 'Wed',
       Positivity: (countsHappy.Wednesday || 0),
-      Negativity: (-(countsSad.Wednesday + countsAnxious.Wednesday) || 0),
-      amt: 3,
+      Negativity: (-( (countsSad.Wednesday || 0) + (countsAnxious.Wednesday || 0)) || 0),
+      // amt: 3,
     },
     {
       name: 'Thurs',
       Positivity: (countsHappy.Thursday || 0),
-      Negativity: (-(countsSad.Thursday + countsAnxious.Thursday) || 0),
-      amt: 2,
+      Negativity: (-( (countsSad.Thursday || 0) + (countsAnxious.Thursday || 0)) || 0),
+      // amt: 2,
     },
     {
       name: 'Fri',
       Positivity: (countsHappy.Friday || 0),
-      Negativity: (-(countsSad.Friday + countsAnxious.Friday) || 0),
-      amt: 1,
+      Negativity: (-( (countsSad.Friday || 0) + (countsAnxious.Friday || 0)) || 0),
+      // amt: 1,
     },
     {
       name: 'Sat',
       Positivity: (countsHappy.Saturday || 0),
-      Negativity: (-(countsSad.Saturday + countsAnxious.Saturday) || 0),
-      amt: 2,
+      Negativity: (-( (countsSad.Saturday || 0) + (countsAnxious.Saturday || 0)) || 0),
+      // amt: 2,
     },
     {
       name: 'Sun',
       Positivity: (countsHappy.Sunday || 0),
-      Negativity: (-(countsSad.Sunday + countsAnxious.Sunday) || 0),
-      amt: 2,
+      Negativity: (-( (countsSad.Sunday || 0) + (countsAnxious.Sunday || 0)) || 0),
+      // amt: 2,
     },
   ];
 
@@ -228,7 +229,7 @@ export default function Statistics({entry}) {
 
 
   return (
-    <div>
+    <div className='statbody'>
           
       <h1>Experience of Positive And Negative Emotions By Day</h1>
       <div className='charts'>
@@ -279,6 +280,7 @@ export default function Statistics({entry}) {
             </ResponsiveContainer>  
           </div>
         </div>
+
           <div id='piechart'>
             <PieChart width={400} height={400}>
               <Pie
@@ -295,10 +297,6 @@ export default function Statistics({entry}) {
               />
             </PieChart>
           </div>
-        
-        
-
-
       </div>
 
     </div>
