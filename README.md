@@ -3,14 +3,13 @@
  
 # Legacy project proposal
 
-**Answer:**
+- unit testing
 
+- refactoring the existing code in typescript
 
+- frontend refactoring to reusable components 
 
-## Project description
-
-
-## MVP
+- when and if finished, adding a calendar feature to the frontend and end-to-end testing
 
 
 
@@ -18,4 +17,11 @@
 
 **Front End:**
 
+React-bootstrap
+andt
+react-d3-cloud
+rechart
+
 **Back End:**
+
+Express, Mongodb
