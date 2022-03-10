@@ -9,7 +9,6 @@ import {
 import Emotions from './Emotions';
 import Journal from './Journal';
 import Statistics from './Statistics';
-// import Wordcloud from './Wordcloud';
 import { sortDate } from '../utilities/sort';
 import './CSS/Navbarcomp.css';
 
@@ -39,7 +38,6 @@ export default function Navbarcomp({entry, setEntry}) {
             <Route exact path="/" element={<Emotions entry={entry} setEntry={setEntry}/>} />
             <Route exact path="/statistics" element={<Statistics entry={entry}/>} />
             <Route exact path="/journal" element={<Journal entry={sortDate(entry)} />} /> 
-            {/* <Route exact path="/wordcloud" element={<Wordcloud entry={entry} />} />  */}
         </Routes>
       </div>
     </Router>

@@ -5,8 +5,8 @@ import sadFace from'./../images/sad.png';
 import happyFace from './../images/happy.png';
 import Button from 'react-bootstrap/Button'
 import './CSS/Emotions.css';
+import moment from 'moment';
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"></link>
-
 
 
 export default function Emotions({setEntry}) {
@@ -56,7 +56,7 @@ export default function Emotions({setEntry}) {
 
           <label className='happyemoji'>
             <div className='emotionlabel'>HAPPY</div>
-            <input type="radio" value='happy' name="happy" checked={emojiType === 'happy'} onChange={onChangeValue}/> <img src={happyFace} />
+            <input type="radio" value='happy' name="happy" checked={emojiType === 'happy'} onChange={onChangeValue} /> <img src={happyFace} />
           </label>
         </div>
 
