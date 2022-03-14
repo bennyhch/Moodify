@@ -7,7 +7,7 @@ import {
   Link
 } from "react-router-dom";
 import Emotions from './Emotions';
-import Journal from './Journal';
+import Journal from './Journal.tsx';
 import Statistics from './Statistics';
 import { sortDate } from '../utilities/sort';
 import './CSS/Navbarcomp.css';

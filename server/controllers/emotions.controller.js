@@ -35,8 +35,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-var Emotion = require('../model/emotionModel').Emotion;
+var _a = require('../model/emotionModel'), Emotion = _a.Emotion, EmotionType = _a.EmotionType;
 function postEmotionEntry(req, res) {
     return __awaiter(this, void 0, void 0, function () {
         var _a, emotion, triggeringEvent, thought, behavior, date, dbRes, error_1;
