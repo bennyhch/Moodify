@@ -3,45 +3,58 @@ import React from 'react'
 import 'antd/dist/antd.css';
 import { Collapse } from 'antd';
 import WordCloud from 'react-d3-cloud'; 
-///
-import Entryitembehavior from './Entryitembehavior';
-import Entryitemevent from './Entryitemevent';
-import Entryitemthought from './Entryitemthought';
-import { sortDate } from '../utilities/sort';
+//////
+import EntryItemBehaviour from './EntryItemBehaviour.tsx';
+import EntryItemEvent from './EntryItemEvent.tsx';
+import EntryItemThought from './EntryItemThought.tsx';
 import './CSS/Journal.css'
 import anxiousFace from './../images/anxious.png';
 import sadFace from'./../images/sad.png';
 import happyFace from './../images/happy.png';
+import Entry from '../interfaces/entry';
+
 const { Panel } = Collapse;
 
-export default function Journal({entry}) {
+interface EntryProps {
+	entry: Entry[];
+}
+interface CloudObj {
+	[key: string]: string | number;
+}
 
-	const filterEmotion = (emotion) => entry.filter(oneEntry => oneEntry.emotion === emotion);
+export default function Journal({ entry }: EntryProps) {
+	
+	const entries = entry //change when access to navbar component is possible without creating merge conflicts
 
-//Word Cloud
+	const filterEmotion = (emotion: string): Entry[] => entries.filter(oneEntry => oneEntry.emotion === emotion);
 
-  const wordCloud = (emotion, type) => {
-	const wordsArr = [];
+//Word Clouds
 
-	filterEmotion(emotion).forEach(event => {
-		const dailyWords = event[type].match(/[a-zA-Z]+/g);
+  const wordCloud = (emotion: string, type: string) => {
+	const wordsArr: string[] = [];
+
+		filterEmotion(emotion).forEach(event => {
+		console.log("event: ", event)
+		const dailyWords:string[] = event[type].match(/[a-zA-Z]+/g);
 		wordsArr.push(...dailyWords)
 	})
   const wordCloudArr = [];
-	const countsCloudEvent = {};
+		const countsCloudEvent: {
+			[key: string]: number;
+		} = {};
 	wordsArr.forEach(wrd => {
 		let val;
-		if (wrd.lenth < 3) val = 1000;
-		else if (wrd.lenth < 6) val = 3000;
-		else if (wrd.lenth < 9) val = 4000;
+		if (wrd.length < 3) val = 1000;
+		else if (wrd.length < 6) val = 3000;
+		else if (wrd.length < 9) val = 4000;
 		else val = 2000;
 		countsCloudEvent[wrd] = (countsCloudEvent[wrd] || 0) + val;
 	})
 	for (const [key, value] of Object.entries(countsCloudEvent)) {
-		let cloudEventObj = {};
-		cloudEventObj.text = key;
-		cloudEventObj.value = value;
-		wordCloudArr.push(cloudEventObj);
+		const wordCloudObj: CloudObj = {};
+		wordCloudObj.text = key;
+		wordCloudObj.value = value;
+		wordCloudArr.push(wordCloudObj);
 	}
 	return wordCloudArr;
 	}
@@ -49,7 +62,7 @@ export default function Journal({entry}) {
  
 
 
-////CHOAS STOPS FROM HERE ////////////////////////////////////////////////////
+////CHOAS STARTS FROM HERE ////////////////////////////////////////////////////
   return (
     <div>
 
@@ -61,7 +74,7 @@ export default function Journal({entry}) {
 						<Panel header="Event" key="1" className='headerjournal'>
 							<div className='collapsecontainer'>
 								<div className='textcontainer'>
-									<div>{filterEmotion('sad').map((ent) => <Entryitemevent ent={ent} key={ent.id} entry={sortDate(entry)}></Entryitemevent>)}</div>
+									<div>{filterEmotion('sad').map((ent) => <EntryItemEvent entry={ent} key={ent.id} ></EntryItemEvent>)}</div>
 								</div>
 								<div className='cloudcontainer'>
 									<WordCloud width={500} height={500} data={wordCloud('sad', 'triggeringEvent')} />
@@ -72,7 +85,7 @@ export default function Journal({entry}) {
 						<Panel header="Thought" key="2" className='headerjournal'>
 							<div className='collapsecontainer'>
 								<div className='textcontainer'>
-									<p>{filterEmotion('sad').map((ent) => <Entryitemthought ent={ent} key={ent.id}></Entryitemthought>)}</p>
+									<p>{filterEmotion('sad').map((ent) => <EntryItemThought entry={ent} key={ent.id}></EntryItemThought>)}</p>
 								</div>
 								<div className='cloudcontainer'>
 									<WordCloud width={500} height={500} data={wordCloud('sad', 'thought')} />
@@ -83,7 +96,7 @@ export default function Journal({entry}) {
 						<Panel header="Behaviour" key="3" className='headerjournal'>
 							<div className='collapsecontainer'>
 								<div className='textcontainer'>
-									<p>{filterEmotion('sad').map((ent) => <Entryitembehavior ent={ent} key={ent.id}></Entryitembehavior>)}</p>
+									<p>{filterEmotion('sad').map((ent) => <EntryItemBehaviour entry={ent} key={ent.id}></EntryItemBehaviour>)}</p>
 								</div>
 								<div className='cloudcontainer'>
 									<WordCloud width={500} height={500} data={wordCloud('sad', 'behavior')} />
@@ -100,7 +113,7 @@ export default function Journal({entry}) {
 					<Panel header="Event" key="1" className='headerjournal'>
 						<div className='collapsecontainer'>
 							<div className='textcontainer'>
-								<p>{filterEmotion('happy').map((ent) => <Entryitemevent ent={ent} key={ent.id}></Entryitemevent>)}</p>
+								<p>{filterEmotion('happy').map((ent) => <EntryItemEvent entry={ent} key={ent.id}></EntryItemEvent>)}</p>
 							</div>
 							<div className='cloudcontainer'>
 								<WordCloud width={500} height={500} data={wordCloud('happy', 'triggeringEvent')} />
@@ -111,7 +124,7 @@ export default function Journal({entry}) {
 					<Panel header="Thought" key="2" className='headerjournal'>
 						<div className='collapsecontainer'>
 							<div className='textcontainer'>
-								<p>{filterEmotion('happy').map((ent) => <Entryitemthought ent={ent} key={ent.id}></Entryitemthought>)}</p>
+								<p>{filterEmotion('happy').map((ent) => <EntryItemThought entry={ent} key={ent.id}></EntryItemThought>)}</p>
 							</div>
 							<div className='cloudcontainer'>
 								<WordCloud width={500} height={500} data={wordCloud('happy', 'thought')} />
@@ -122,7 +135,7 @@ export default function Journal({entry}) {
 					<Panel header="Behaviour" key="3" className='headerjournal'>
 						<div className='collapsecontainer'>
 							<div className='textcontainer'>
-								<p>{filterEmotion('happy').map((ent) => <Entryitembehavior ent={ent} key={ent.id}></Entryitembehavior>)}</p>
+								<p>{filterEmotion('happy').map((ent) => <EntryItemBehaviour entry={ent} key={ent.id}></EntryItemBehaviour>)}</p>
 							</div>
 							<div className='cloudcontainer'>
 								<WordCloud width={500} height={500} data={wordCloud('happy', 'behavior')} />
@@ -139,7 +152,7 @@ export default function Journal({entry}) {
 						<Panel header="Event" key="1" className='headerjournal'>
 							<div className='collapsecontainer'>
 								<div className='textcontainer'>
-									<p>{filterEmotion('anxious').map((ent) => <Entryitemevent ent={ent} key={ent.id}></Entryitemevent>)}</p>
+									<p>{filterEmotion('anxious').map((ent) => <EntryItemEvent entry={ent} key={ent.id}></EntryItemEvent>)}</p>
 								</div>
 								<div className='cloudcontainer'>
 									<WordCloud width={500} height={500} data={wordCloud('anxious', 'triggeringEvent')} />
@@ -150,7 +163,7 @@ export default function Journal({entry}) {
 						<Panel header="Thought" key="2" className='headerjournal'>
 							<div className='collapsecontainer'>
 								<div className='textcontainer'>
-									<p>{filterEmotion('anxious').map((ent) => <Entryitemthought ent={ent} key={ent.id}></Entryitemthought>)}</p>
+									<p>{filterEmotion('anxious').map((ent) => <EntryItemThought entry={ent} key={ent.id}></EntryItemThought>)}</p>
 								</div>
 								<div className='cloudcontainer'>
 									<WordCloud width={500} height={500} data={wordCloud('anxious', 'thought')} />
@@ -161,7 +174,7 @@ export default function Journal({entry}) {
 						<Panel header="Behaviour" key="3" className='headerjournal'>
 							<div className='collapsecontainer'>
 								<div className='textcontainer'>
-									<p>{filterEmotion('anxious').map((ent) => <Entryitembehavior ent={ent} key={ent.id}></Entryitembehavior>)}</p>
+									<p>{filterEmotion('anxious').map((ent) => <EntryItemBehaviour entry={ent} key={ent.id}></EntryItemBehaviour>)}</p>
 								</div>
 								<div className='cloudcontainer'>
 									<WordCloud width={500} height={500} data={wordCloud('anxious', 'behavior')} />
