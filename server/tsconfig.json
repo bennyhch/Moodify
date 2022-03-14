@@ -1,12 +1,12 @@
 {
     "compilerOptions": {
-        "target": "es6",
+        "target": "es5",
         "module": "commonjs",
-        "allowJs": true,
+        //"allowJs": true,
         "strict": true,
-        "strictNullChecks": true
+        //"strictNullChecks": true
     },
-    "include": [
-        "**/*.ts"
-    ]
+    //     "include": [
+    //         "**/*.ts"
+    // , "controllers/statistics.controller.js", "model/emotionModel.js"    ]
 }

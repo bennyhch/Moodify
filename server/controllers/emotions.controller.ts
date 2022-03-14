@@ -1,5 +1,6 @@
-const { Emotion } = require('../model/emotionModel');
 import { Request, Response } from 'express';
+
+const { Emotion } = require('../model/emotionModel');
 
 
 async function postEmotionEntry(req: Request, res: Response) {

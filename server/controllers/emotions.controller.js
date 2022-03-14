@@ -36,25 +36,32 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var http2_1 = require("http2");
-var mongoose = require('mongoose');
-function run() {
+var Emotion = require('../model/emotionModel').Emotion;
+function postEmotionEntry(req, res) {
     return __awaiter(this, void 0, void 0, function () {
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0: return [4 /*yield*/, (0, http2_1.connect)('mongodb://localhost:27017/moodify')];
+        var _a, emotion, triggeringEvent, thought, behavior, date, dbRes, error_1;
+        return __generator(this, function (_b) {
+            switch (_b.label) {
+                case 0:
+                    _b.trys.push([0, 2, , 3]);
+                    console.log(req.body);
+                    _a = req.body, emotion = _a.emotion, triggeringEvent = _a.triggeringEvent, thought = _a.thought, behavior = _a.behavior, date = _a.date;
+                    return [4 /*yield*/, Emotion.create({ emotion: emotion, triggeringEvent: triggeringEvent, thought: thought, behavior: behavior, date: date })];
                 case 1:
-                    _a.sent();
-                    console.log('db connected');
-                    return [2 /*return*/];
+                    dbRes = _b.sent();
+                    res.send(dbRes);
+                    // res.send('new hello from the controller - homepage(postEmotionEntryt)');
+                    res.status(201);
+                    return [3 /*break*/, 3];
+                case 2:
+                    error_1 = _b.sent();
+                    console.log(error_1);
+                    res.status(500);
+                    res.end();
+                    return [3 /*break*/, 3];
+                case 3: return [2 /*return*/];
             }
         });
     });
 }
-// mongoose
-//     .connect('mongodb://localhost:27017/moodify')
-//     .then(() => console.log('db connected!!'))
-//     .catch(err => console.error(err));
-var db = mongoose.connection;
-// db.on('error', (error) => console.log(error));
-module.exports = db;
+module.exports = postEmotionEntry;

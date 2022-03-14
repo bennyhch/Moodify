@@ -1,11 +1,9 @@
-const {Router} = require('express');
-const router = Router();
-const postEmotionEntry = require('./controllers/emotions.controller.js');
-const getStatistics = require('./controllers/statistics.controller.js');
-
-
+"use strict";
+exports.__esModule = true;
+var Router = require('express').Router;
+var router = Router();
+var postEmotionEntry = require('./controllers/emotions.controller.ts');
+var getStatistics = require('./controllers/statistics.controller.js');
 router.post('/entry', postEmotionEntry);
 router.get('/statistics', getStatistics);
-
-
-module.exports = router;
+exports["default"] = router;
