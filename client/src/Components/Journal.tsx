@@ -16,15 +16,14 @@ import Entry from '../interfaces/entry';
 const { Panel } = Collapse;
 
 interface EntryProps {
-	entry: Entry[];
+	entries: Entry[];
 }
 interface CloudObj {
 	[key: string]: string | number;
 }
 
-export default function Journal({ entry }: EntryProps) {
+export default function Journal({ entries }: EntryProps) {
 	
-	const entries = entry //change when access to navbar component is possible without creating merge conflicts
 
 	const filterEmotion = (emotion: string): Entry[] => entries.filter(oneEntry => oneEntry.emotion === emotion);
 
@@ -33,15 +32,17 @@ export default function Journal({ entry }: EntryProps) {
   const wordCloud = (emotion: string, type: string) => {
 	const wordsArr: string[] = [];
 
-		filterEmotion(emotion).forEach(event => {
+		filterEmotion(emotion).forEach((event: any) => {//event inherits the type Entry from the result of filterEmotion(emotin), but this leaves an error since the interface Entry has predefined property keys - and I couldn't make the dynamic keys work with them...
 		console.log("event: ", event)
 		const dailyWords:string[] = event[type].match(/[a-zA-Z]+/g);
 		wordsArr.push(...dailyWords)
 	})
-  const wordCloudArr = [];
+		const wordCloudArr = [];
+		
 		const countsCloudEvent: {
 			[key: string]: number;
 		} = {};
+
 	wordsArr.forEach(wrd => {
 		let val;
 		if (wrd.length < 3) val = 1000;

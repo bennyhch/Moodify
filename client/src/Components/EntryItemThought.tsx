@@ -7,6 +7,7 @@ interface EntryProps {
   entry: Entry;
 }
 
+
 export default function EntryItemThought({entry}: EntryProps) {
   return (
     <div className='container'>

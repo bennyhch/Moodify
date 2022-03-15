@@ -2,9 +2,11 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Emotion = void 0;
 // import mongoose from 'mongoose';
+
 const mongoose_1 = require("mongoose");
 //2 create a schema corresponding to document interface
 const emotionSchema = new mongoose_1.Schema({
+
     emotion: String,
     triggeringEvent: String,
     // thought and behavior can be taken out if too much...

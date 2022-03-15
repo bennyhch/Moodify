@@ -10,7 +10,7 @@ export const postOneEntry = (entry) => {
         .catch(e => console.log(e));
 }
 
-export const getEntry = () => {
+export const getEntries = () => {
     return fetch(`${baseUrl}/statistics`)
         .then(res => res.json())
         .catch(e => console.log(e));

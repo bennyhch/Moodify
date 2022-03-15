@@ -1,3 +1,4 @@
+
 const express = require("express");
 const app = express();
 const cors = require('cors');
@@ -5,7 +6,6 @@ const morgan = require('morgan');
 const { router } = require('./router');
 //const db = require('./model/db.ts');
 const PORT = 3300;
-
 
 app.use(cors());
 app.use(express.json());
