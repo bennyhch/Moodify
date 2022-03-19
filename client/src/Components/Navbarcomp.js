@@ -7,12 +7,12 @@ import {
   Link
 } from "react-router-dom";
 import Emotions from './Emotions';
-import Journal from './Journal';
+import Journal from './Journal.tsx';
 import Statistics from './Statistics';
 import { sortDate } from '../utilities/sort';
 import './CSS/Navbarcomp.css';
 
-export default function Navbarcomp({entry, setEntry}) {
+export default function Navbarcomp({entries, setEntry}) {
   return (
     <Router>
       <div>
@@ -35,9 +35,9 @@ export default function Navbarcomp({entry, setEntry}) {
 
       <div>
         <Routes>
-            <Route exact path="/" element={<Emotions entry={entry} setEntry={setEntry}/>} />
-            <Route exact path="/statistics" element={<Statistics entry={entry}/>} />
-            <Route exact path="/journal" element={<Journal entry={sortDate(entry)} />} /> 
+            <Route exact path="/" element={<Emotions entry={entries} setEntry={setEntry}/>} />
+            <Route exact path="/statistics" element={<Statistics entry={entries}/>} />
+            <Route exact path="/journal" element={<Journal entries={sortDate(entries)} />} /> 
         </Routes>
       </div>
     </Router>

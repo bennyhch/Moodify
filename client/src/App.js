@@ -2,20 +2,20 @@ import React, {useEffect, useState} from 'react';
 import './App.css';
 import Navbarcomp from './Components/Navbarcomp';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { getEntry } from './Services/ApiClient';
+import { getEntries } from './Services/ApiClient';
 
 
 function App() {
-  const [entry, setEntry] = useState([]);
+  const [entries, setEntries] = useState([]);
 
   useEffect(() => {
-    getEntry()
-      .then(entryList => setEntry(entryList));
+    getEntries()
+      .then(entryList => setEntries(entryList));
   }, []);
 
   return (
     <div className="App">
-      <Navbarcomp entry={entry} setEntry={setEntry}/>
+      <Navbarcomp entries={entries} setEntry={setEntry}/>
     </div>
   );
 }

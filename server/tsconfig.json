@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+
+        "target": "es2016",
+        "module": "commonjs",
+        "esModuleInterop": true,
+        //"allowJs": true,
+        "strict": true,
+        "skipLibCheck": true
+
+        //"strictNullChecks": true
+    },
+    //     "include": [
+    //         "**/*.ts"
+    // , "controllers/statistics.controller.js", "model/emotionModel.js"    ]
+}
