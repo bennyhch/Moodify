@@ -4,8 +4,8 @@
 </p>
 <br>
 
-- A mood-tracking and journaling app for users to keep track of their mood throughout the days. 
-- Helps to identify negative behaviors and thoughts, as well as the triggering events to a particular negative or positive emotion.
+- A mood-tracking and journaling app for users to keep track of their mood throughout the days
+- Helps to identify negative behaviors and thoughts, as well as the triggering events to a particular negative or positive emotion
 
 ## Screenshot 
 
