@@ -4,40 +4,8 @@
 </p>
 <br>
 
-Moodify is a mood-tracking and journaling app for users to keep track of how their mood swings throughout the days. It also helps them to identify negative behaviors and thoughts, as well as the triggering events to a particular negative or positive emotion.
-
-# Getting started
-
-
-
-## Prerequisites
-In order to get the app running, you'll need to install MongoDB. For more info on installation, please refer to [here](https://www.mongodb.com/docs/manual/installation/). 
-
-
-
-
-## Installation
-1. Clone the current repo and enter the _server_ directory, next, intall dependencies 
-```
-git clone https://github.com/bennyhch/Moodify.git 
-cd server
-
-npm install
-npm i nodemon 
-```
-
-2. Start the development server
-```
-npx nodemon 
-```
-
-3. Move to the _client_ and next, install dependencies
-```
-cd ../client
-npm install moment react-d3-cloud recharts 
-```
-
-
+- A mood-tracking and journaling app for users to keep track of their mood throughout the days. 
+- Helps to identify negative behaviors and thoughts, as well as the triggering events to a particular negative or positive emotion.
 
 ## Screenshot 
 
@@ -49,6 +17,34 @@ npm install moment react-d3-cloud recharts
 <img src="https://github.com/bennyhch/Moodify/blob/main/graph.png" width="800" >
 </p>
 
+# Getting started
+
+
+## Prerequisites
+In order to get the app running, you'll need to install MongoDB. For more info on installation, please refer to [here](https://www.mongodb.com/docs/manual/installation/). 
+
+
+## Installation
+1. Clone the current repo and enter the _server_ directory, next, install dependencies 
+```
+git clone https://github.com/bennyhch/Moodify.git 
+cd server
+npm install
+npm install nodemon 
+```
+
+2. Start the server
+```
+npx nodemon 
+```
+
+3. Move to the _client_ and start development build after intalling the dependencies
+```
+cd ../client
+npm install 
+npm start
+```
+
 ## Built with
 - Express.js
 - React with React-Router
@@ -56,4 +52,4 @@ npm install moment react-d3-cloud recharts
 - Figma 
 
 ## Author
-Ben Ho - [Linkedin](https://www.linkedin.com/in/ho-ben/)
+[Ben Ho](https://www.github.com/bennyhch) - [Linkedin](https://www.linkedin.com/in/ho-ben/)
